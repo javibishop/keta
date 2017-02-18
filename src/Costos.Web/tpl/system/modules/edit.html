@@ -1,0 +1,30 @@
+﻿<h3 class="page-title">
+    {{ 'system.module' | translate }} <small>{{module.name}}</small>
+</h3>
+<div class="page-bar">
+    <div ncy-breadcrumb class="page-breadcrumb"></div>
+    <div class="page-toolbar">
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-primary" data-ng-click="save()">Guardar</button>
+        </div>
+    </div>
+</div>
+<form role="form" name="tenantForm">
+    <div class="row margin-bottom-20">
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input">
+                <input type="text" class="form-control" id="name" data-ng-model="module.name">
+                <label for="name">Name</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input">
+                <input type="number" class="form-control" id="listIndex" data-ng-model="module.listIndex">
+                <label for="listIndex">Indice</label>
+            </div>
+        </div>
+    </div>
+    
+</form>

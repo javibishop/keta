@@ -1,0 +1,48 @@
+﻿<h3 class="page-title">
+    {{ 'system.tenant' | translate }} <small>{{tenant.name}}</small>
+</h3>
+<div class="page-bar">
+    <div ncy-breadcrumb class="page-breadcrumb"></div>
+    <div class="page-toolbar">
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-primary" data-ng-click="save()">Guardar</button>
+        </div>
+    </div>
+</div>
+<form role="form" name="tenantForm">
+    <div class="row margin-bottom-20">
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input">
+                <input type="text" class="form-control" id="name" data-ng-model="tenant.name">
+                <label for="name">Name</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input">
+                <input type="email" class="form-control" id="email" data-ng-model="tenant.email">
+                <label for="email">Email</label>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-bottom-20">
+        <div class="col-md-4">
+            <fieldset>
+                <legend>Usuarios</legend>
+
+                <div class="md-checkbox" ng-repeat="user in users">
+                    <input type="checkbox" id="user-{{user.id}}" class="md-check" checklist-model="tenant.userIds" checklist-value="user.id">
+                    <label for="user-{{user.id}}">
+                        <span></span>
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        {{user.userName}}
+                    </label>
+
+                    <!--<button type="button" class="btn btn-info" style="margin-left: 20px;" data-ng-show="isCompanyEnabled(company.id)">Asignar artículos</button>-->
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</form>

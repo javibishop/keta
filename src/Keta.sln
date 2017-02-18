@@ -1,0 +1,45 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keta.Web", "Costos.Web\Keta.Web.csproj", "{7626A3E0-5CB9-432B-9687-423DBF57925E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AF3373A0-115B-4958-8E26-D96B6CE68988}"
+	ProjectSection(SolutionItems) = preProject
+		.bowerrc = .bowerrc
+		.gitignore = .gitignore
+		bower.json = bower.json
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Keta.Core", "Costos.Core\Keta.Core.csproj", "{691E23F9-90EC-43B5-89EA-9E3A2909CA0C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7626A3E0-5CB9-432B-9687-423DBF57925E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7626A3E0-5CB9-432B-9687-423DBF57925E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7626A3E0-5CB9-432B-9687-423DBF57925E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7626A3E0-5CB9-432B-9687-423DBF57925E}.Debug|x86.Build.0 = Debug|Any CPU
+		{7626A3E0-5CB9-432B-9687-423DBF57925E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7626A3E0-5CB9-432B-9687-423DBF57925E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7626A3E0-5CB9-432B-9687-423DBF57925E}.Release|x86.ActiveCfg = Release|Any CPU
+		{7626A3E0-5CB9-432B-9687-423DBF57925E}.Release|x86.Build.0 = Release|Any CPU
+		{691E23F9-90EC-43B5-89EA-9E3A2909CA0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{691E23F9-90EC-43B5-89EA-9E3A2909CA0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{691E23F9-90EC-43B5-89EA-9E3A2909CA0C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{691E23F9-90EC-43B5-89EA-9E3A2909CA0C}.Debug|x86.Build.0 = Debug|Any CPU
+		{691E23F9-90EC-43B5-89EA-9E3A2909CA0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{691E23F9-90EC-43B5-89EA-9E3A2909CA0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{691E23F9-90EC-43B5-89EA-9E3A2909CA0C}.Release|x86.ActiveCfg = Release|Any CPU
+		{691E23F9-90EC-43B5-89EA-9E3A2909CA0C}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,851 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.1.1\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.1.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7626A3E0-5CB9-432B-9687-423DBF57925E}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Costos.Web</RootNamespace>
+    <AssemblyName>Costos.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+    <TypeScriptToolsVersion>1.8</TypeScriptToolsVersion>
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Aspose.Cells">
+      <HintPath>..\..\lib\Aspose.Cells\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="Hangfire.Core, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.Core.1.5.3\lib\net45\Hangfire.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Hangfire.SqlServer, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Hangfire.SqlServer.1.5.3\lib\net45\Hangfire.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.3.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=3.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.3.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ServiceStack, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Servicestack\Net40\ServiceStack.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Api.Swagger, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Servicestack\Net40\ServiceStack.Api.Swagger.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Client, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Servicestack\Net40\ServiceStack.Client.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Common, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Servicestack\Net40\ServiceStack.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Interfaces, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Servicestack\Net40\ServiceStack.Interfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Mvc">
+      <HintPath>..\..\lib\Servicestack\Net40\ServiceStack.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Servicestack\Net40\ServiceStack.OrmLite.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.OrmLite.SqlServer, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Servicestack\Net40\ServiceStack.OrmLite.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Redis, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Servicestack\Net40\ServiceStack.Redis.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Server, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Servicestack\Net40\ServiceStack.Server.dll</HintPath>
+    </Reference>
+    <Reference Include="ServiceStack.Text, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Servicestack\Net40\ServiceStack.Text.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Telerik.Reporting, Version=9.1.15.731, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL" />
+    <Reference Include="Telerik.Reporting.Services.ServiceStack, Version=9.1.15.731, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\lib\Servicestack\Net40\Telerik.Reporting.Services.ServiceStack.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppHost.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infraestructure\Session.cs" />
+    <Compile Include="Infraestructure\UserAuthRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServiceInterface\MovilAtencionServices.cs" />
+    <Compile Include="ServiceInterface\MarcaServices.cs" />
+    <Compile Include="ServiceInterface\ClienteServices.cs" />
+    <Compile Include="ServiceInterface\ApplicationService.cs" />
+    <Compile Include="ServiceInterface\System\LogServices.cs" />
+    <Compile Include="ServiceInterface\System\LocalizationServices.cs" />
+    <Compile Include="ServiceInterface\System\SessionServices.cs" />
+    <Compile Include="ServiceInterface\System\ModuleServices.cs" />
+    <Compile Include="ServiceInterface\System\RoleService.cs" />
+    <Compile Include="ServiceInterface\System\UserServices.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bower_components\angular-animate\angular-animate.min.js" />
+    <Content Include="bower_components\angular-breadcrumb\release\angular-breadcrumb.min.js" />
+    <Content Include="bower_components\angular-cookies\angular-cookies.min.js" />
+    <Content Include="bower_components\angular-dialog-service\dist\dialogs.min.css" />
+    <Content Include="bower_components\angular-dialog-service\dist\dialogs.min.js" />
+    <Content Include="bower_components\angular-loading-bar\build\loading-bar.min.css" />
+    <Content Include="bower_components\angular-loading-bar\build\loading-bar.min.js" />
+    <Content Include="bower_components\angular-moment\angular-moment.min.js" />
+    <Content Include="bower_components\angular-sanitize\angular-sanitize.min.js" />
+    <Content Include="bower_components\angular-scroll\angular-scroll.min.js" />
+    <Content Include="bower_components\angular-touch\angular-touch.min.js" />
+    <Content Include="bower_components\angular-translate-loader-url\angular-translate-loader-url.min.js" />
+    <Content Include="bower_components\angular-translate\angular-translate.min.js" />
+    <Content Include="bower_components\angular-ui-bootstrap\ui-bootstrap-tpls.min.js" />
+    <Content Include="bower_components\angular-ui-router-tabs\src\ui-router-tabs.js" />
+    <Content Include="bower_components\angular-ui-router\release\angular-ui-router.min.js" />
+    <Content Include="bower_components\angular\angular.min.js" />
+    <Content Include="bower_components\bootstrap-switch\dist\css\bootstrap3\bootstrap-switch.min.css" />
+    <Content Include="bower_components\bootstrap-switch\dist\js\bootstrap-switch.min.js" />
+    <Content Include="bower_components\bootstrap\dist\css\bootstrap.min.css" />
+    <Content Include="bower_components\font-awesome\css\font-awesome.min.css" />
+    <Content Include="bower_components\jquery-blockui\jquery.blockUI.js" />
+    <Content Include="bower_components\jquery-cookie\jquery.cookie.js" />
+    <Content Include="bower_components\jquery\dist\jquery.min.js" />
+    <Content Include="bower_components\lodash\lodash.min.js" />
+    <Content Include="bower_components\moment\min\moment-with-locales.min.js" />
+    <Content Include="bower_components\ng-backstretch\dist\ng-backstretch.min.js" />
+    <Content Include="bower_components\ngAlertify\alertify.bootstrap.css" />
+    <Content Include="bower_components\ngAlertify\alertify.core.css" />
+    <Content Include="bower_components\ngAlertify\alertify.css" />
+    <Content Include="bower_components\ngAlertify\alertify.default.css" />
+    <Content Include="bower_components\ngAlertify\alertify.min.css" />
+    <Content Include="bower_components\ngAlertify\alertify.rtl.css" />
+    <Content Include="bower_components\ngAlertify\alertify.rtl.min.css" />
+    <Content Include="bower_components\ngAlertify\gulpfile.js" />
+    <Content Include="bower_components\ngAlertify\karma-ci.conf.js" />
+    <Content Include="bower_components\ngAlertify\karma.conf.js" />
+    <Content Include="bower_components\ngAlertify\ngAlertify.js" />
+    <Content Include="bower_components\ngAlertify\ngAlertify.min.js" />
+    <Content Include="bower_components\ngAlertify\src\ngAlertify.js" />
+    <Content Include="bower_components\ngAlertify\themes\bootstrap.css" />
+    <Content Include="bower_components\ngAlertify\themes\bootstrap.min.css" />
+    <Content Include="bower_components\ngAlertify\themes\bootstrap.rtl.css" />
+    <Content Include="bower_components\ngAlertify\themes\bootstrap.rtl.min.css" />
+    <Content Include="bower_components\ngAlertify\themes\default.css" />
+    <Content Include="bower_components\ngAlertify\themes\default.min.css" />
+    <Content Include="bower_components\ngAlertify\themes\default.rtl.css" />
+    <Content Include="bower_components\ngAlertify\themes\default.rtl.min.css" />
+    <Content Include="bower_components\ngAlertify\themes\semantic.css" />
+    <Content Include="bower_components\ngAlertify\themes\semantic.min.css" />
+    <Content Include="bower_components\ngAlertify\themes\semantic.rtl.css" />
+    <Content Include="bower_components\ngAlertify\themes\semantic.rtl.min.css" />
+    <Content Include="bower_components\ngStorage\ngStorage.min.js" />
+    <Content Include="bower_components\ocLazyLoad\dist\ocLazyLoad.min.js" />
+    <Content Include="bower_components\restangular\dist\restangular.min.js" />
+    <Content Include="bower_components\select2\select2.min.js" />
+    <Content Include="bower_components\simple-line-icons\css\simple-line-icons.css" />
+    <Content Include="bower_components\slimScroll\jquery.slimscroll.min.js" />
+    <Content Include="bower_components\uniform\jquery.uniform.min.js" />
+    <Content Include="bower_components\uniform\themes\default\css\uniform.default.min.css" />
+    <Content Include="Content\css\components-md.css" />
+    <Content Include="Content\css\custom.css" />
+    <Content Include="Content\css\jqGrid.css" />
+    <Content Include="Content\css\layout.css" />
+    <Content Include="Content\css\login-soft.css" />
+    <Content Include="Content\css\plugins-md.css" />
+    <Content Include="Content\css\select2.css" />
+    <Content Include="Content\css\themes\blue.css" />
+    <Content Include="Content\css\themes\darkblue.css" />
+    <Content Include="Content\css\themes\default.css" />
+    <Content Include="Content\css\themes\grey.css" />
+    <Content Include="Content\css\themes\light.css" />
+    <Content Include="Content\css\themes\light2.css" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.af-ZA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.af.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.am-ET.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.am.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-AE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-BH.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-DZ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-EG.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-IQ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-JO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-KW.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-LB.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-LY.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-MA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-OM.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-QA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-SA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-SY.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-TN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar-YE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ar.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.arn-CL.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.arn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.as-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.as.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.az-Cyrl-AZ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.az-Cyrl.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.az-Latn-AZ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.az-Latn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.az.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ba-RU.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ba.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.be-BY.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.be.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.bg-BG.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.bg.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.bn-BD.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.bn-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.bn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.bo-CN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.bo.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.br-FR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.br.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.bs-Cyrl-BA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.bs-Cyrl.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.bs-Latn-BA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.bs-Latn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.bs.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ca-ES-valencia.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ca-ES.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ca.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.chr-Cher-US.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.chr-Cher.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.chr.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.co-FR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.co.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.cs-CZ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.cs.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.cy-GB.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.cy.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.da-DK.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.da.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.de-AT.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.de-CH.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.de-DE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.de-LI.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.de-LU.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.de.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.dsb-DE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.dsb.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.dv-MV.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.dv.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.el-GR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.el.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-029.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-AU.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-BZ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-CA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-GB.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-HK.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-IE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-JM.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-MY.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-NZ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-PH.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-SG.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-TT.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-US.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-ZA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en-ZW.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.en.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-419.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-AR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-BO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-CL.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-CO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-CR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-DO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-EC.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-ES.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-GT.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-HN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-MX.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-NI.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-PA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-PE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-PR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-PY.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-SV.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-US.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-UY.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es-VE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.es.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.et-EE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.et.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.eu-ES.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.eu.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fa-IR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fa.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ff-Latn-SN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ff-Latn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ff.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fi-FI.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fi.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fil-PH.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fil.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fo-FO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fo.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-BE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-CA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-CD.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-CH.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-CI.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-CM.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-FR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-HT.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-LU.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-MA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-MC.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-ML.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-RE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr-SN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fr.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fy-NL.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.fy.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ga-IE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ga.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.gd-GB.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.gd.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.gl-ES.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.gl.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.gn-PY.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.gn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.gsw-FR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.gsw.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.gu-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.gu.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ha-Latn-NG.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ha-Latn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ha.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.haw-US.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.haw.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.he-IL.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.he.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.hi-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.hi.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.hr-BA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.hr-HR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.hr.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.hsb-DE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.hsb.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.hu-HU.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.hu.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.hy-AM.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.hy.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.id-ID.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.id.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ig-NG.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ig.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ii-CN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ii.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.is-IS.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.is.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.it-CH.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.it-IT.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.it.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.iu-Cans-CA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.iu-Cans.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.iu-Latn-CA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.iu-Latn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.iu.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ja-JP.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ja.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.jv-Latn-ID.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.jv-Latn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.jv.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ka-GE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ka.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.kk-KZ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.kk.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.kl-GL.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.kl.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.km-KH.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.km.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.kn-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.kn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ko-KR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ko.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.kok-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.kok.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ku-Arab-IQ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ku-Arab.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ku.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ky-KG.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ky.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.lb-LU.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.lb.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.lo-LA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.lo.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.lt-LT.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.lt.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.lv-LV.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.lv.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mg-MG.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mg.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mi-NZ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mi.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mk-MK.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mk.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ml-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ml.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mn-Cyrl.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mn-MN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mn-Mong-CN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mn-Mong-MN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mn-Mong.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.moh-CA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.moh.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mr-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mr.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ms-BN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ms-MY.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ms.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mt-MT.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.mt.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.my-MM.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.my.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.nb-NO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.nb.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ne-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ne-NP.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ne.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.nl-BE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.nl-NL.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.nl.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.nn-NO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.nn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.no.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.nqo-GN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.nqo.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.nso-ZA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.nso.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.oc-FR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.oc.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.om-ET.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.om.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.or-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.or.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.pa-Arab-PK.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.pa-Arab.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.pa-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.pa.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.pl-PL.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.pl.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.prs-AF.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.prs.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ps-AF.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ps.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.pt-AO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.pt-BR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.pt-PT.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.pt.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.qut-GT.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.qut.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.quz-BO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.quz-EC.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.quz-PE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.quz.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.rm-CH.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.rm.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ro-MD.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ro-RO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ro.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ru-RU.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ru-UA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ru.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.rw-RW.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.rw.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sa-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sa.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sah-RU.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sah.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sd-Arab-PK.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sd-Arab.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sd.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.se-FI.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.se-NO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.se-SE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.se.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.si-LK.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.si.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sk-SK.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sk.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sl-SI.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sl.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sma-NO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sma-SE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sma.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.smj-NO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.smj-SE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.smj.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.smn-FI.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.smn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sms-FI.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sms.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sn-Latn-ZW.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sn-Latn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.so-SO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.so.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sq-AL.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sq.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sr-Cyrl-BA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sr-Cyrl-CS.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sr-Cyrl-ME.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sr-Cyrl-RS.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sr-Cyrl.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sr-Latn-BA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sr-Latn-CS.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sr-Latn-ME.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sr-Latn-RS.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sr-Latn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sr.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.st-ZA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.st.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sv-FI.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sv-SE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sv.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sw-KE.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.sw.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.syr-SY.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.syr.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ta-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ta-LK.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ta.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.te-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.te.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tg-Cyrl-TJ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tg-Cyrl.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tg.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.th-TH.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.th.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ti-ER.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ti-ET.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ti.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tk-TM.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tk.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tn-BW.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tn-ZA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tr-TR.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tr.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ts-ZA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ts.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tt-RU.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tt.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tzm-Latn-DZ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tzm-Latn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tzm-Tfng-MA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tzm-Tfng.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.tzm.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ug-CN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ug.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.uk-UA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.uk.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ur-IN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ur-PK.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.ur.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.uz-Cyrl-UZ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.uz-Cyrl.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.uz-Latn-UZ.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.uz-Latn.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.uz.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.vi-VN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.vi.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.wo-SN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.wo.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.xh-ZA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.xh.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.yo-NG.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.yo.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zgh-Tfng-MA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zgh-Tfng.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zgh.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zh-CHS.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zh-CHT.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zh-CN.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zh-Hans.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zh-Hant.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zh-HK.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zh-MO.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zh-SG.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zh-TW.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zh.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zu-ZA.min.js" />
+    <Content Include="Content\lib\kendoui\cultures\kendo.culture.zu.min.js" />
+    <Content Include="Content\lib\kendoui\kendo.all.min.js" />
+    <Content Include="Content\lib\kendoui\kendo.mobile.min.js" />
+    <Content Include="Content\lib\kendoui\kendo.web.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.bg-BG.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.cs-CZ.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.da-DK.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.de-CH.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.de-DE.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.en-US.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.es-ES.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.fr-CH.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.fr-FR.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.he-IL.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.it-CH.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.it-IT.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.ja-JP.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.nb-NO.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.nl-NL.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.pl-PL.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.pt-BR.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.pt-PT.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.ro-RO.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.ru-RU.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.sk-SK.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.sv-SE.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.tr-TR.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.uk-UA.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.zh-CN.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.zh-HK.min.js" />
+    <Content Include="Content\lib\kendoui\messages\kendo.messages.zh-TW.min.js" />
+    <Content Include="Content\lib\telerikreporting\js\telerikReportViewer-9.1.15.731.js" />
+    <Content Include="Content\lib\telerikreporting\js\telerikReportViewer-9.1.15.731.min.js" />
+    <Content Include="Content\lib\telerikreporting\styles\telerikReportViewer-9.1.15.731.css" />
+    <Content Include="Content\lib\telerikreporting\templates\telerikReportViewerTemplate-9.1.15.731.html" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="index.html" />
+    <TypeScriptCompile Include="Scripts\app.keta.ts" />
+    <TypeScriptCompile Include="Scripts\app.directives.ts" />
+    <TypeScriptCompile Include="Scripts\app.management.ts" />
+    <TypeScriptCompile Include="Scripts\app.dashboard.ts" />
+    <Content Include="Scripts\demo.js" />
+    <Content Include="Scripts\grid.locale-es-ar.js" />
+    <Content Include="Scripts\jqueryblocui.js" />
+    <Content Include="Scripts\layout.js" />
+    <Content Include="Scripts\login-soft.js" />
+    <Content Include="Scripts\metronic.js" />
+    <Content Include="Scripts\quick-sidebar.js" />
+    <Content Include="tpl\app.html" />
+    <Content Include="tpl\movilatenciones\edit.html" />
+    <Content Include="tpl\movilatenciones\list.html" />
+    <Content Include="tpl\clientes\edit.html" />
+    <Content Include="tpl\clientes\list.html" />
+    <Content Include="tpl\marcas\edit.html" />
+    <Content Include="tpl\marcas\list.html" />
+    <Content Include="tpl\management\dashboard.html" />
+    <Content Include="tpl\login\signin.html" />
+    <Content Include="tpl\management\inbox.html" />
+    <Content Include="tpl\management\report.html" />
+    <Content Include="tpl\management\start.html" />
+    <Content Include="tpl\login\forgot.html" />
+    <Content Include="tpl\login\lock_screen.html" />
+    <Content Include="tpl\login\registration.html" />
+    <TypeScriptCompile Include="Scripts\app.system.ts" />
+    <TypeScriptCompile Include="Scripts\app.ts" />
+    <Content Include="tpl\partials\footer.html" />
+    <Content Include="tpl\partials\header.html" />
+    <Content Include="tpl\partials\quick-sidebar.html" />
+    <Content Include="tpl\partials\sidebar.html" />
+    <Content Include="tpl\partials\theme-panel.html" />
+    <Content Include="tpl\system\companyimports\edit.html" />
+    <Content Include="tpl\system\companyimports\list.html" />
+    <Content Include="tpl\system\roles\edit.html" />
+    <Content Include="tpl\system\roles\list.html" />
+    <Content Include="tpl\system\modules\edit.html" />
+    <Content Include="tpl\system\modules\list.html" />
+    <Content Include="tpl\system\tenants\edit.html" />
+    <Content Include="tpl\system\tenants\list.html" />
+    <Content Include="tpl\system\users\edit.html" />
+    <Content Include="tpl\system\users\list.html" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\_references.js" />
+    <TypeScriptCompile Include="Scripts\app.core.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-animate.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-cookies.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-mocks.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-resource.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-route.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular-sanitize.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\angularjs\angular.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\jquery\jquery.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\lib.d.ts" />
+    <TypeScriptCompile Include="Scripts\typings\lodash\lodash.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bower_components\ngAlertify\lib\alertify.js\" />
+    <Folder Include="Content\img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Costos.Core\Keta.Core.csproj">
+      <Project>{691e23f9-90ec-43b5-89ea-9e3a2909ca0c}</Project>
+      <Name>Keta.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bower_components\ngAlertify\.bower.json" />
+    <Content Include="bower_components\ngAlertify\bower.json" />
+    <Content Include="bower_components\ngAlertify\package.json" />
+    <Content Include="bower_components\ngAlertify\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\PublishProfiles\keta.pubxml" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <TypeScriptOutFile>Scripts\app.js</TypeScriptOutFile>
+    <TypeScriptRemoveComments>True</TypeScriptRemoveComments>
+    <TypeScriptTarget>ES5</TypeScriptTarget>
+    <TypeScriptCompileOnSaveEnabled>True</TypeScriptCompileOnSaveEnabled>
+    <TypeScriptNoImplicitAny>False</TypeScriptNoImplicitAny>
+    <TypeScriptModuleKind>None</TypeScriptModuleKind>
+    <TypeScriptOutDir />
+    <TypeScriptGeneratesDeclarations>False</TypeScriptGeneratesDeclarations>
+    <TypeScriptNoEmitOnError>True</TypeScriptNoEmitOnError>
+    <TypeScriptSourceMap>False</TypeScriptSourceMap>
+    <TypeScriptMapRoot />
+    <TypeScriptSourceRoot />
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <TypeScriptOutFile>Scripts\crm.js</TypeScriptOutFile>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8873</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8873/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.1\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.1.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.1.1\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

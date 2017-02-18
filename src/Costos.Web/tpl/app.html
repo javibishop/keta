@@ -1,0 +1,19 @@
+<div data-ng-include="'tpl/partials/header.html'" data-ng-controller="HeaderController" class="page-header md-shadow-z-1-i navbar navbar-fixed-top">
+</div>
+<div class="clearfix">
+</div>
+<div class="page-container">
+    <div data-ng-include="'tpl/partials/sidebar.html'" data-ng-controller="SidebarController" class="page-sidebar-wrapper">
+    </div>
+    <div class="page-content-wrapper">
+        <toaster-container toaster-options="{'position-class': 'toast-top-center', 'time-out': 10000}"></toaster-container>
+        <div class="page-content">
+            <div data-ui-view="">
+            </div>
+        </div>
+    </div>
+    <a href="javascript:;" class="page-quick-sidebar-toggler"><i class="icon-close"></i></a>
+    <div data-ng-include="'tpl/partials/quick-sidebar.html'" data-ng-controller="QuickSidebarController" class="page-quick-sidebar-wrapper"></div>
+</div>
+<div data-ng-include="'tpl/partials/footer.html'" data-ng-controller="FooterController" class="page-footer">
+</div>

@@ -1,0 +1,74 @@
+﻿<h3 class="page-title">
+    {{ 'system.module' | translate }} <small>{{module.name}}</small>
+</h3>
+<div class="page-bar">
+    <div ncy-breadcrumb class="page-breadcrumb"></div>
+    <div class="page-toolbar">
+        <div class="btn-group pull-right">
+            <button type="button" class="btn btn-primary" data-ng-click="save()">Guardar</button>
+        </div>
+    </div>
+</div>
+<form role="form" name="tenantForm">
+    <div class="row">
+        <div class="col-md-8">
+            <div class="form-group form-md-lookup">
+                <label for="organizationCompanyLookup">Empresa</label>
+                <div id="organizationCompanyLookup" name="companyId" data-organization-company-lookup="" data-ng-model="companyimport.companyId" required style="width: 100%;"
+                     data-ng-disabled="params.state=='rerun'" />
+            </div>
+        </div>
+    </div>
+    <div class="row margin-bottom-20">
+        <div class="col-md-6">
+            <fieldset>
+                <legend>Módulos que Importa</legend>
+                <div class="md-checkbox">
+                    <input type="checkbox" id="Nomina" class="md-check" data-ng-model="companyimport.nomina">
+                    <label for="Nomina">
+                        <span></span>
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Nomina
+                    </label>
+                </div>
+                <div class="md-checkbox">
+                    <input type="checkbox" id="Compras" class="md-check" data-ng-model="companyimport.compras">
+                    <label for="Compras">
+                        <span></span>
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Compras
+                    </label>
+                </div>
+                <div class="md-checkbox">
+                    <input type="checkbox" id="Ventas" class="md-check" data-ng-model="companyimport.ventas">
+                    <label for="Ventas">
+                        <span></span>
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Ventas
+                    </label>
+                </div>
+                <div class="md-checkbox">
+                    <input type="checkbox" id="Produccion" class="md-check" data-ng-model="companyimport.produccion">
+                    <label for="Produccion">
+                        <span></span>
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Producción
+                    </label>
+                </div>
+                <div class="md-checkbox">
+                    <input type="checkbox" id="Impuestos" class="md-check" data-ng-model="companyimport.impuestos">
+                    <label for="Impuestos">
+                        <span></span>
+                        <span class="check"></span>
+                        <span class="box"></span>
+                        Impuestos
+                    </label>
+                </div>
+            </fieldset>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,49 @@
+﻿.ui-th-column, .ui-jqgrid .ui-jqgrid-htable th.ui-th-column-header {
+    text-align: center;
+}
+
+.ui-jqgrid, .ui-jqgrid:before, .ui-jqgrid:after, .ui-jqgrid *, .ui-jqgrid *:before, .ui-jqgrid *:after {
+    -webkit-box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+.ui-search-table select, .ui-search-table input {
+    padding: 0px 0px;
+}
+
+.ui-jqgrid .ui-jqgrid-htable th {
+    height: 20px;
+}
+
+.ui-jqgrid tr.jqgrow td {
+    height: 20px;
+}
+
+.ui-search-input textarea, .ui-search-input input[type="text"], .ui-search-input input[type="password"], .ui-search-input input[type="datetime"], .ui-search-input input[type="datetime-local"], .ui-search-input input[type="date"], .ui-search-input input[type="month"], .ui-search-input input[type="time"], .ui-search-input input[type="week"], .ui-search-input input[type="number"], .ui-search-input input[type="email"], .ui-search-input input[type="url"], .ui-search-input input[type="search"], .ui-search-input input[type="tel"], .ui-search-input input[type="color"], .ui-search-input .uneditable-input {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    -webkit-transition: border linear .2s, box-shadow linear .2s;
+    -moz-transition: border linear .2s, box-shadow linear .2s;
+    -o-transition: border linear .2s, box-shadow linear .2s;
+    transition: border linear .2s, box-shadow linear .2s;
+    height: 20px;
+    line-height: 20px;
+    color: #555;
+    vertical-align: middle;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    border: 1px solid #aaa;
+}
+
+/*Boton x de los filtros */
+a.g-menu-item, a.soptclass, a.clearsearchclass {
+  margin-left: 5px;
+}

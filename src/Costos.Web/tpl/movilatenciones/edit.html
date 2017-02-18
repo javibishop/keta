@@ -1,0 +1,85 @@
+﻿<h3 class="page-title">
+    {{ 'Atenciones' | translate }} <small>{{movilatencion.codigo}}</small>
+</h3>
+<div class="page-bar">
+    <div ncy-breadcrumb class="page-breadcrumb"></div>
+    <div class="page-toolbar">
+        <div class="btn-group pull-right">
+            <button type="submit" ng-disabled="movilatencionForm.$invalid" class="btn btn-primary" data-ng-click="save()">Guardar</button>
+        </div>
+    </div>
+</div>
+<ng-form name="movilatencionForm">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group form-md-lookup">
+                <label for="ketaClienteLookup">Cliente</label>
+                <div id="ketaClienteLookup" data-keta-cliente-lookup="" placeholder="Selecciona un cliente" ng-required="true" data-ng-model="movilatencion.clienteId"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row margin-bottom-20">
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input">
+                <input type="text" class="form-control" id="patente" placeholder="Ingrese una patente" ng-required="true" data-ng-model="movilatencion.patente">
+                <label for="patente">Patente</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group form-md-lookup">
+                <label for="ketamarcaLookup">Marca</label>
+                <div id="ketamarcaLookup" data-keta-marca-lookup="" placeholder="Selecciona una marca" ng-required="true" data-ng-model="movilatencion.marcaId"></div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input">
+                <input type="number" class="form-control" placeholder="Ingrese un año" ng-required="true" id="anio" data-ng-model="movilatencion.anio">
+                <label for="anio">Año</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input">
+                <input type="text" class="form-control" id="modelo" placeholder="Ingrese un modelo" ng-required="true" data-ng-model="movilatencion.modelo">
+                <label for="modelo">Modelo</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input">
+                <input type="number" class="form-control" id="costoRepuestos" placeholder="Ingrese el costo de repuestos" ng-required="true" data-ng-model="movilatencion.costoRepuestos">
+                <label for="costoRepuestos">Costo Repuestos</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input">
+                <input type="number" class="form-control" id="costoTotal" placeholder="Ingrese Ingrese el costo total" ng-required="true" data-ng-model="movilatencion.costoTotal">
+                <label for="costoTotal">Costo Total</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input">
+                <input type="date" class="form-control" id="fecha"  ng-required="true" data-ng-model="movilatencion.fecha">
+                <label for="fecha">Fecha</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group form-md-line-input">
+                <textarea type="text" class="form-control" name="Detalle" placeholder="Ingrese un dealle" ng-required="true" required></textarea>
+                <label for="detalle">Detalle</label>
+            </div>
+        </div>
+    </div>
+</ng-form>
