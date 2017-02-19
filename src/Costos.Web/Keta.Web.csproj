@@ -173,8 +173,8 @@
     <Content Include="bower_components\bootstrap-switch\dist\css\bootstrap3\bootstrap-switch.min.css" />
     <Content Include="bower_components\bootstrap-switch\dist\js\bootstrap-switch.min.js" />
     <Content Include="bower_components\bootstrap\dist\css\bootstrap.min.css" />
-	<Content Include="bower_components\fastclick\fastclick.js" />
-	<Content Include="bower_components\font-awesome\css\font-awesome.min.css" />
+    <Content Include="bower_components\fastclick\fastclick.js" />
+    <Content Include="bower_components\font-awesome\css\font-awesome.min.css" />
     <Content Include="bower_components\jquery-blockui\jquery.blockUI.js" />
     <Content Include="bower_components\jquery-cookie\jquery.cookie.js" />
     <Content Include="bower_components\jquery\dist\jquery.min.js" />
@@ -686,6 +686,7 @@
     <TypeScriptCompile Include="Scripts\app.directives.ts" />
     <TypeScriptCompile Include="Scripts\app.management.ts" />
     <TypeScriptCompile Include="Scripts\app.dashboard.ts" />
+    <Content Include="Scripts\app.js" />
     <Content Include="Scripts\demo.js" />
     <Content Include="Scripts\grid.locale-es-ar.js" />
     <Content Include="Scripts\jqueryblocui.js" />
@@ -803,7 +804,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>8873</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
