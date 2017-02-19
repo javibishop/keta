@@ -16,14 +16,11 @@ using ServiceStack.Redis;
 using ServiceStack.Text;
 using Telerik.Reporting.Services;
 using Telerik.Reporting.Services.ServiceStack;
-using Hangfire;
-using Hangfire.Dashboard;
 
 namespace Keta.Web
 {
     public class AppHost : AppHostBase
     {
-        private BackgroundJobServer _backgroundJobServer;
         //Tell Service Stack the name of your application and where to find your web services
         public AppHost() : base("Keta Api", typeof(UserServices).Assembly, typeof(ReportsHostBase).Assembly)
         {
