@@ -14,15 +14,13 @@ using ServiceStack.OrmLite;
 using ServiceStack.OrmLite.SqlServer;
 using ServiceStack.Redis;
 using ServiceStack.Text;
-using Telerik.Reporting.Services;
-using Telerik.Reporting.Services.ServiceStack;
 
 namespace Keta.Web
 {
     public class AppHost : AppHostBase
     {
         //Tell Service Stack the name of your application and where to find your web services
-        public AppHost() : base("Keta Api", typeof(UserServices).Assembly, typeof(ReportsHostBase).Assembly)
+        public AppHost() : base("Keta Api", typeof(UserServices).Assembly)
         {
             
         }
