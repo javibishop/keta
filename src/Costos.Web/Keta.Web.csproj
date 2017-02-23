@@ -1526,7 +1526,6 @@
     <Content Include="index.html" />
     <TypeScriptCompile Include="Scripts\app.keta.ts" />
     <TypeScriptCompile Include="Scripts\app.directives.ts" />
-    <TypeScriptCompile Include="Scripts\app.management.ts" />
     <TypeScriptCompile Include="Scripts\app.dashboard.ts" />
     <Content Include="Scripts\app.js" />
     <Content Include="Scripts\demo.js" />

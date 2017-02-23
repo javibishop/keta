@@ -212,7 +212,7 @@ angular.module('app.keta', [
         }
 
         $scope.save = () => {
-            var fecha = moment($scope.movilatencion.fecha).format('YYYY-MM-DD');
+            var fecha = new Date($scope.movilatencion.fecha);
             $scope.movilatencion.fecha = fecha;
 
             if (id) {

@@ -1,3 +1,498 @@
+angular.module('app.core', [])
+    .constant('APP_MEDIAQUERY', {
+    'desktopXL': 1200,
+    'desktop': 992,
+    'tablet': 768,
+    'mobile': 480
+});
+var jsRequires = {
+    scripts: {
+        'login-soft': 'content/css/login-soft.css',
+        'modernizr': ['vendor/modernizr/modernizr.js'],
+        'spin': 'vendor/ladda/spin.min.js',
+        'perfect-scrollbar-plugin': ['vendor/perfect-scrollbar/perfect-scrollbar.min.js', 'vendor/perfect-scrollbar/perfect-scrollbar.min.css'],
+        'ladda': ['vendor/ladda/spin.min.js', 'vendor/ladda/ladda.min.js', 'vendor/ladda/ladda-themeless.min.css'],
+        'sweet-alert': ['vendor/sweet-alert/sweet-alert.min.js', 'vendor/sweet-alert/sweet-alert.css'],
+        'chartjs': 'vendor/chartjs/Chart.min.js',
+        'jquery-sparkline': 'vendor/sparkline/jquery.sparkline.min.js',
+        'ckeditor-plugin': 'vendor/ckeditor/ckeditor.js',
+        'jquery-nestable-plugin': ['vendor/ng-nestable/jquery.nestable.js', 'vendor/ng-nestable/jquery.nestable.css'],
+        'touchspin-plugin': 'vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js',
+        'bootstrapjs': 'bower_components/bootstrap/dist/js/bootstrap.min.js',
+        'jqueryui': ['bower_components/jquery-ui/jquery-ui.min.js', 'bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css'],
+        'jqGrid': ['scripts/grid.locale-es-ar.js', 'bower_components/jqgrid/js/jquery.jqGrid.min.js', 'bower_components/jqgrid/css/ui.jqgrid.css', 'Content/css/jqGrid.css'],
+        'select2': { files: ['bower_components/select2/select2.min.js', 'bower_components/select2/select2_locale_es.js', 'bower_components/select2/select2.css', 'Content/css/select2.css'], serie: true },
+        'kendoweb': { files: ['Content/lib/kendoui/kendo.web.min.js'] },
+        'htmlToPlaintext': 'assets/js/filters/htmlToPlaintext.js'
+    },
+    modules: [
+        {
+            name: 'dialogs.main',
+            insertBefore: '#ng_load_plugins_before',
+            files: ['bower_components/angular-dialog-service/dist/dialogs.min.css', 'bower_components/angular-dialog-service/dist/dialogs.min.js']
+        },
+        {
+            name: 'ng-backstretch',
+            files: ['bower_components/ng-backstretch/dist/ng-backstretch.min.js']
+        },
+        {
+            name: 'perfect_scrollbar',
+            files: ['vendor/perfect-scrollbar/angular-perfect-scrollbar.js']
+        },
+        {
+            name: 'alertify',
+            files: ['bower_components/ngAlertify/ngAlertify.js', 'bower_components/ngAlertify/alertify.min.css', 'bower_components/ngAlertify/alertify.default.css']
+        },
+        {
+            name: 'toaster',
+            files: ['bower_components/AngularJS-Toaster/toaster.js', 'bower_components/AngularJS-Toaster/toaster.css']
+        }, {
+            name: 'angularBootstrapNavTree',
+            files: ['vendor/angular-bootstrap-nav-tree/abn_tree_directive.js', 'vendor/angular-bootstrap-nav-tree/abn_tree.css']
+        }, {
+            name: 'angular-ladda',
+            files: ['vendor/ladda/angular-ladda.min.js']
+        }, {
+            name: 'ngTable',
+            files: ['vendor/ng-table/ng-table.min.js', 'vendor/ng-table/ng-table.min.css']
+        }, {
+            name: 'ui.select',
+            files: ['vendor/ui-select/select.min.js', 'vendor/ui-select/select.min.css', 'vendor/ui-select/select2.css', 'vendor/ui-select/select2-bootstrap.css', 'vendor/ui-select/selectize.bootstrap3.css']
+        }, {
+            name: 'ui.mask',
+            files: ['vendor/ui-utils/mask/mask.js']
+        }, {
+            name: 'angular-bootstrap-touchspin',
+            files: ['vendor/bootstrap-touchspin/angular.bootstrap-touchspin.js', 'vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css']
+        }, {
+            name: 'ngImgCrop',
+            files: ['vendor/ngImgCrop/ng-img-crop.js', 'vendor/ngImgCrop/ng-img-crop.css']
+        }, {
+            name: 'angularFileUpload',
+            files: ['vendor/angular-file-upload/angular-file-upload.min.js', 'vendor/angular-file-upload/directives.js']
+        }, {
+            name: 'ngAside',
+            files: ['vendor/angular-aside/angular-aside.min.js', 'vendor/angular-aside/angular-aside.min.css']
+        }, {
+            name: 'truncate',
+            files: ['vendor/angular-truncate/truncate.js']
+        }, {
+            name: 'oitozero.ngSweetAlert',
+            files: ['vendor/sweet-alert/ngSweetAlert.min.js']
+        }, {
+            name: 'monospaced.elastic',
+            files: ['vendor/angular-elastic/elastic.js']
+        }, {
+            name: 'ngMap',
+            files: ['vendor/angular-google-maps/ng-map.min.js']
+        }, {
+            name: 'tc.chartjs',
+            files: ['vendor/chartjs/tc-angular-chartjs.min.js']
+        }, {
+            name: 'sparkline',
+            files: ['vendor/sparkline/angular-sparkline.js']
+        }, {
+            name: 'flow',
+            files: ['vendor/ng-flow/ng-flow-standalone.min.js']
+        }, {
+            name: 'uiSwitch',
+            files: ['vendor/angular-ui-switch/angular-ui-switch.min.js', 'vendor/angular-ui-switch/angular-ui-switch.min.css']
+        }, {
+            name: 'ckeditor',
+            files: ['vendor/ckeditor/angular-ckeditor.min.js']
+        }, {
+            name: 'mwl.calendar',
+            files: ['vendor/angular-bootstrap-calendar/angular-bootstrap-calendar.js', 'vendor/angular-bootstrap-calendar/angular-bootstrap-calendar-tpls.js', 'vendor/angular-bootstrap-calendar/angular-bootstrap-calendar.min.css']
+        }, {
+            name: 'ng-nestable',
+            files: ['vendor/ng-nestable/angular-nestable.js']
+        }, {
+            name: 'vAccordion',
+            files: ['vendor/v-accordion/v-accordion.min.js', 'vendor/v-accordion/v-accordion.min.css']
+        }, {
+            name: 'xeditable',
+            files: ['vendor/angular-xeditable/xeditable.min.js', 'vendor/angular-xeditable/xeditable.css']
+        }, {
+            name: 'config-xeditable',
+            files: ['vendor/angular-xeditable/config-xeditable.js']
+        }, {
+            name: 'checklist-model',
+            files: ['vendor/checklist-model/checklist-model.js']
+        }, {
+            name: 'telerikreport',
+            files: ['ReportViewr/js/telerikReportViewer-9.1.15.731.min.js', 'ReportViewr/js/telerikReportViewer-9.1.15.731.min.css']
+        }]
+};
+function loadSequence() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i - 0] = arguments[_i];
+    }
+    return {
+        deps: ['$ocLazyLoad', '$q',
+            function ($ocLL, $q) {
+                var promise = $q.when(1);
+                for (var i = 0, len = args.length; i < len; i++) {
+                    promise = promiseThen(args[i]);
+                }
+                return promise;
+                function promiseThen(arg) {
+                    if (typeof arg == 'function')
+                        return promise.then(arg);
+                    else
+                        return promise.then(function () {
+                            var nowLoad = requiredData(arg);
+                            if (!nowLoad)
+                                return $.error('Route resolve: Bad resource name [' + arg + ']');
+                            return $ocLL.load(nowLoad);
+                        });
+                }
+                function requiredData(name) {
+                    if (jsRequires.modules)
+                        for (var m in jsRequires.modules)
+                            if (jsRequires.modules[m].name && jsRequires.modules[m].name === name)
+                                return jsRequires.modules[m];
+                    return jsRequires.scripts && jsRequires.scripts[name];
+                }
+            }]
+    };
+}
+angular.module('app.dashboard', [
+    'ngCookies',
+    'ngStorage',
+    'ui.bootstrap',
+    'ngAnimate',
+    'ngSanitize',
+    'ui.router',
+    'restangular',
+    'pascalprecht.translate',
+    'app.core'
+]).config(['$stateProvider', function ($stateProvider) {
+        $stateProvider
+            .state('app.dashboard', {
+            templateUrl: '/tpl/dashboard.html',
+            url: '/dashboard',
+            resolve: loadSequence('jquery-sparkline', 'sparkline'),
+            title: 'Dashboard',
+            ncyBreadcrumb: {
+                label: 'Consola'
+            }
+        });
+    }
+])
+    .controller('SparklineCtrl', function ($scope) {
+    $scope.sales = [600, 923, 482, 1211, 490, 1125, 1487];
+    $scope.earnings = [400, 650, 886, 443, 502, 412, 353];
+    $scope.referrals = [4879, 6567, 5022, 5890, 9234, 7128, 4811];
+})
+    .controller('VisitsCtrl', function ($scope) {
+    $scope.data = {
+        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+        datasets: [
+            {
+                label: 'My First dataset',
+                fillColor: 'rgba(220,220,220,0.2)',
+                strokeColor: 'rgba(220,220,220,1)',
+                pointColor: 'rgba(220,220,220,1)',
+                pointStrokeColor: '#fff',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(220,220,220,1)',
+                data: [65, 59, 80, 81, 56, 55, 40, 84, 64, 120, 132, 87]
+            },
+            {
+                label: 'My Second dataset',
+                fillColor: 'rgba(151,187,205,0.2)',
+                strokeColor: 'rgba(151,187,205,1)',
+                pointColor: 'rgba(151,187,205,1)',
+                pointStrokeColor: '#fff',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(151,187,205,1)',
+                data: [28, 48, 40, 19, 86, 27, 90, 102, 123, 145, 60, 161]
+            }
+        ]
+    };
+    $scope.options = {
+        maintainAspectRatio: false,
+        responsive: true,
+        scaleShowGridLines: true,
+        scaleGridLineColor: 'rgba(0,0,0,.05)',
+        scaleGridLineWidth: 1,
+        bezierCurve: false,
+        bezierCurveTension: 0.4,
+        pointDot: true,
+        pointDotRadius: 4,
+        pointDotStrokeWidth: 1,
+        pointHitDetectionRadius: 20,
+        datasetStroke: true,
+        datasetStrokeWidth: 2,
+        datasetFill: true,
+        onAnimationProgress: function () { },
+        onAnimationComplete: function () { },
+        legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+    };
+})
+    .controller('SalesCtrl', function ($scope) {
+    $scope.data = {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
+        datasets: [
+            {
+                label: 'My First dataset',
+                fillColor: 'rgba(220,220,220,0.5)',
+                strokeColor: 'rgba(220,220,220,0.8)',
+                highlightFill: 'rgba(220,220,220,0.75)',
+                highlightStroke: 'rgba(220,220,220,1)',
+                data: [65, 59, 80, 81, 56, 55, 40]
+            },
+            {
+                label: 'My Second dataset',
+                fillColor: 'rgba(151,187,205,0.5)',
+                strokeColor: 'rgba(151,187,205,0.8)',
+                highlightFill: 'rgba(151,187,205,0.75)',
+                highlightStroke: 'rgba(151,187,205,1)',
+                data: [28, 48, 40, 19, 86, 27, 90]
+            }
+        ]
+    };
+    $scope.options = {
+        maintainAspectRatio: false,
+        responsive: true,
+        scaleBeginAtZero: true,
+        scaleShowGridLines: true,
+        scaleGridLineColor: "rgba(0,0,0,.05)",
+        scaleGridLineWidth: 1,
+        barShowStroke: true,
+        barStrokeWidth: 2,
+        barValueSpacing: 5,
+        barDatasetSpacing: 1,
+        legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+    };
+})
+    .controller('OnotherCtrl', function ($scope) {
+    $scope.data = [
+        {
+            value: 300,
+            color: '#F7464A',
+            highlight: '#FF5A5E',
+            label: 'Red'
+        },
+        {
+            value: 50,
+            color: '#46BFBD',
+            highlight: '#5AD3D1',
+            label: 'Green'
+        },
+        {
+            value: 100,
+            color: '#FDB45C',
+            highlight: '#FFC870',
+            label: 'Yellow'
+        }
+    ];
+    $scope.total = 450;
+    $scope.options = {
+        responsive: false,
+        segmentShowStroke: true,
+        segmentStrokeColor: '#fff',
+        segmentStrokeWidth: 2,
+        percentageInnerCutout: 50,
+        animationSteps: 100,
+        animationEasing: 'easeOutBounce',
+        animateRotate: true,
+        animateScale: false,
+        legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
+    };
+})
+    .controller('LastCtrl', function ($scope) {
+    $scope.data = {
+        labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
+        datasets: [
+            {
+                label: 'My First dataset',
+                fillColor: 'rgba(220,220,220,0.2)',
+                strokeColor: 'rgba(220,220,220,1)',
+                pointColor: 'rgba(220,220,220,1)',
+                pointStrokeColor: '#fff',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(220,220,220,1)',
+                data: [65, 59, 90, 81, 56, 55, 40]
+            },
+            {
+                label: 'My Second dataset',
+                fillColor: 'rgba(151,187,205,0.2)',
+                strokeColor: 'rgba(151,187,205,1)',
+                pointColor: 'rgba(151,187,205,1)',
+                pointStrokeColor: '#fff',
+                pointHighlightFill: '#fff',
+                pointHighlightStroke: 'rgba(151,187,205,1)',
+                data: [28, 48, 40, 19, 96, 27, 100]
+            }
+        ]
+    };
+    $scope.options = {
+        responsive: true,
+        scaleShowLine: true,
+        angleShowLineOut: true,
+        scaleShowLabels: false,
+        scaleBeginAtZero: true,
+        angleLineColor: 'rgba(0,0,0,.1)',
+        angleLineWidth: 1,
+        pointLabelFontFamily: '"Arial"',
+        pointLabelFontStyle: 'normal',
+        pointLabelFontSize: 10,
+        pointLabelFontColor: '#666',
+        pointDot: true,
+        pointDotRadius: 3,
+        pointDotStrokeWidth: 1,
+        pointHitDetectionRadius: 20,
+        datasetStroke: true,
+        datasetStrokeWidth: 2,
+        datasetFill: true,
+        legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
+    };
+});
+var _this = this;
+angular.module('app.directives', [])
+    .directive('ngSpinnerBar', ['$rootScope',
+    function ($rootScope) {
+        return {
+            link: function (scope, element, attrs) {
+                element.addClass('hide');
+                $rootScope.$on('$stateChangeStart', function () {
+                    element.removeClass('hide');
+                });
+                $rootScope.$on('$stateChangeSuccess', function () {
+                    element.addClass('hide');
+                    $('body').removeClass('page-on-load');
+                });
+                $rootScope.$on('$stateNotFound', function () {
+                    element.addClass('hide');
+                });
+                $rootScope.$on('$stateChangeError', function () {
+                    element.addClass('hide');
+                });
+            }
+        };
+    }
+])
+    .directive('a', function () {
+    return {
+        restrict: 'E',
+        link: function (scope, elem, attrs) {
+            if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
+                elem.on('click', function (e) {
+                    e.preventDefault();
+                });
+            }
+        }
+    };
+})
+    .directive('checklistModel', ['$parse', '$compile', function ($parse, $compile) {
+        function contains(arr, item, comparator) {
+            if (angular.isArray(arr)) {
+                for (var i = arr.length; i--;) {
+                    if (comparator(arr[i], item)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        function add(arr, item, comparator) {
+            arr = angular.isArray(arr) ? arr : [];
+            if (!contains(arr, item, comparator)) {
+                arr.push(item);
+            }
+            return arr;
+        }
+        function remove(arr, item, comparator) {
+            if (angular.isArray(arr)) {
+                for (var i = arr.length; i--;) {
+                    if (comparator(arr[i], item)) {
+                        arr.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+            return arr;
+        }
+        function postLinkFn(scope, elem, attrs) {
+            $compile(elem)(scope);
+            var getter = $parse(attrs.checklistModel);
+            var setter = getter.assign;
+            var checklistChange = $parse(attrs.checklistChange);
+            var value = $parse(attrs.checklistValue)(scope.$parent);
+            var comparator = angular.equals;
+            if (attrs.hasOwnProperty('checklistComparator')) {
+                comparator = $parse(attrs.checklistComparator)(scope.$parent);
+            }
+            scope.$watch('checked', function (newValue, oldValue) {
+                if (newValue === oldValue) {
+                    return;
+                }
+                var current = getter(scope.$parent);
+                if (newValue === true) {
+                    setter(scope.$parent, add(current, value, comparator));
+                }
+                else {
+                    setter(scope.$parent, remove(current, value, comparator));
+                }
+                if (checklistChange) {
+                    checklistChange(scope);
+                }
+            });
+            function setChecked(newArr, oldArr) {
+                scope.checked = contains(newArr, value, comparator);
+            }
+            if (angular.isFunction(scope.$parent.$watchCollection)) {
+                scope.$parent.$watchCollection(attrs.checklistModel, setChecked);
+            }
+            else {
+                scope.$parent.$watch(attrs.checklistModel, setChecked, true);
+            }
+        }
+        return {
+            restrict: 'A',
+            priority: 1000,
+            terminal: true,
+            scope: true,
+            compile: function (tElement, tAttrs) {
+                if (tElement[0].tagName !== 'INPUT' || tAttrs.type !== 'checkbox') {
+                    throw 'checklist-model should be applied to `input[type="checkbox"]`.';
+                }
+                if (!tAttrs.checklistValue) {
+                    throw 'You should provide `checklist-value`.';
+                }
+                tElement.removeAttr('checklist-model');
+                tElement.attr('ng-model', 'checked');
+                return postLinkFn;
+            }
+        };
+    }])
+    .directive('report-viewer', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'app/directives/Report/template.html',
+        link: function (scope, element, attrs) {
+            element.telerik_ReportViewer({
+                error: function (data) {
+                    alert(data);
+                },
+                reportSource: {
+                    report: 'Reports.blankReport, Reports'
+                },
+                serviceUrl: '/api/reports/',
+                templateUrl: '/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html',
+                ready: function () {
+                    _this.refreshReport();
+                }
+            });
+        },
+        scope: {
+            content: '=',
+            reportname: '@reportname'
+        }
+    };
+});
 angular.module('app.keta', [
     'ngCookies',
     'ngStorage',
@@ -188,7 +683,7 @@ angular.module('app.keta', [
             }
         }
         $scope.save = function () {
-            var fecha = moment($scope.movilatencion.fecha).format('YYYY-MM-DD');
+            var fecha = new Date($scope.movilatencion.fecha);
             $scope.movilatencion.fecha = fecha;
             if (id) {
                 $scope.movilatencion.put().then(function () { $state.go('app.keta.movilatenciones'); });
@@ -577,409 +1072,6 @@ angular.module('app.keta', [
             }
         };
     }]);
-var _this = this;
-angular.module('app.directives', [])
-    .directive('ngSpinnerBar', ['$rootScope',
-    function ($rootScope) {
-        return {
-            link: function (scope, element, attrs) {
-                element.addClass('hide');
-                $rootScope.$on('$stateChangeStart', function () {
-                    element.removeClass('hide');
-                });
-                $rootScope.$on('$stateChangeSuccess', function () {
-                    element.addClass('hide');
-                    $('body').removeClass('page-on-load');
-                });
-                $rootScope.$on('$stateNotFound', function () {
-                    element.addClass('hide');
-                });
-                $rootScope.$on('$stateChangeError', function () {
-                    element.addClass('hide');
-                });
-            }
-        };
-    }
-])
-    .directive('a', function () {
-    return {
-        restrict: 'E',
-        link: function (scope, elem, attrs) {
-            if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
-                elem.on('click', function (e) {
-                    e.preventDefault();
-                });
-            }
-        }
-    };
-})
-    .directive('checklistModel', ['$parse', '$compile', function ($parse, $compile) {
-        function contains(arr, item, comparator) {
-            if (angular.isArray(arr)) {
-                for (var i = arr.length; i--;) {
-                    if (comparator(arr[i], item)) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-        function add(arr, item, comparator) {
-            arr = angular.isArray(arr) ? arr : [];
-            if (!contains(arr, item, comparator)) {
-                arr.push(item);
-            }
-            return arr;
-        }
-        function remove(arr, item, comparator) {
-            if (angular.isArray(arr)) {
-                for (var i = arr.length; i--;) {
-                    if (comparator(arr[i], item)) {
-                        arr.splice(i, 1);
-                        break;
-                    }
-                }
-            }
-            return arr;
-        }
-        function postLinkFn(scope, elem, attrs) {
-            $compile(elem)(scope);
-            var getter = $parse(attrs.checklistModel);
-            var setter = getter.assign;
-            var checklistChange = $parse(attrs.checklistChange);
-            var value = $parse(attrs.checklistValue)(scope.$parent);
-            var comparator = angular.equals;
-            if (attrs.hasOwnProperty('checklistComparator')) {
-                comparator = $parse(attrs.checklistComparator)(scope.$parent);
-            }
-            scope.$watch('checked', function (newValue, oldValue) {
-                if (newValue === oldValue) {
-                    return;
-                }
-                var current = getter(scope.$parent);
-                if (newValue === true) {
-                    setter(scope.$parent, add(current, value, comparator));
-                }
-                else {
-                    setter(scope.$parent, remove(current, value, comparator));
-                }
-                if (checklistChange) {
-                    checklistChange(scope);
-                }
-            });
-            function setChecked(newArr, oldArr) {
-                scope.checked = contains(newArr, value, comparator);
-            }
-            if (angular.isFunction(scope.$parent.$watchCollection)) {
-                scope.$parent.$watchCollection(attrs.checklistModel, setChecked);
-            }
-            else {
-                scope.$parent.$watch(attrs.checklistModel, setChecked, true);
-            }
-        }
-        return {
-            restrict: 'A',
-            priority: 1000,
-            terminal: true,
-            scope: true,
-            compile: function (tElement, tAttrs) {
-                if (tElement[0].tagName !== 'INPUT' || tAttrs.type !== 'checkbox') {
-                    throw 'checklist-model should be applied to `input[type="checkbox"]`.';
-                }
-                if (!tAttrs.checklistValue) {
-                    throw 'You should provide `checklist-value`.';
-                }
-                tElement.removeAttr('checklist-model');
-                tElement.attr('ng-model', 'checked');
-                return postLinkFn;
-            }
-        };
-    }])
-    .directive('report-viewer', function () {
-    return {
-        restrict: 'E',
-        templateUrl: 'app/directives/Report/template.html',
-        link: function (scope, element, attrs) {
-            element.telerik_ReportViewer({
-                error: function (data) {
-                    alert(data);
-                },
-                reportSource: {
-                    report: 'Reports.blankReport, Reports'
-                },
-                serviceUrl: '/api/reports/',
-                templateUrl: '/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html',
-                ready: function () {
-                    _this.refreshReport();
-                }
-            });
-        },
-        scope: {
-            content: '=',
-            reportname: '@reportname'
-        }
-    };
-});
-angular.module('app.management', [
-    'ngCookies',
-    'ngStorage',
-    'ui.bootstrap',
-    'ngAnimate',
-    'ngSanitize',
-    'ui.router',
-    'restangular',
-    'pascalprecht.translate',
-    'app.core'
-])
-    .config(['$stateProvider', function ($stateProvider) {
-        $stateProvider
-            .state('app.management', {
-            url: '/management',
-            template: '<data-ui-view />',
-            ncyBreadcrumb: {
-                label: 'Gestiones'
-            },
-            abstract: true
-        })
-            .state('app.management.inbox', {
-            url: '/bandeja',
-            controller: 'ManagementInboxController',
-            templateUrl: 'tpl/management/inbox.html',
-            resolve: loadSequence('ui.grid', 'ui.grid.autoResize'),
-            ncyBreadcrumb: {
-                label: 'Bandeja'
-            }
-        })
-            .state('app.management.report', {
-            url: '/reporte',
-            controller: 'ManagementReportController',
-            templateUrl: 'tpl/management/report.html',
-            resolve: loadSequence('ui.grid', 'ui.grid.autoResize'),
-            ncyBreadcrumb: {
-                label: 'Reporte'
-            }
-        })
-            .state('app.management.dashboard', {
-            url: '/consola',
-            controller: 'ManagementDashboardController',
-            templateUrl: 'tpl/management/dashboard.html',
-            resolve: loadSequence('ui.grid', 'ui.grid.autoResize'),
-            ncyBreadcrumb: {
-                label: 'Consola'
-            }
-        })
-            .state('app.management.start', {
-            url: '/iniciar',
-            controller: 'ManagementStartController',
-            templateUrl: 'tpl/management/start.html',
-            resolve: loadSequence('flow'),
-            ncyBreadcrumb: {
-                label: 'Iniciar Gestión'
-            }
-        });
-    }
-])
-    .controller('ManagementStartController', ['$scope', '$translate', '$state', '$log', function ($scope, $translate, $state, $log) {
-    }])
-    .controller('ManagementReportController', ['$scope', '$translate', '$state', '$log', function ($scope, $translate, $state, $log) {
-    }])
-    .controller('ManagementInboxController', ['$scope', '$translate', '$state', '$log', function ($scope, $translate, $state, $log) {
-    }])
-    .controller('ManagementDashboardController', ['$scope', '$translate', '$state', '$log', function ($scope, $translate, $state, $log) {
-    }]);
-angular.module('app.dashboard', [
-    'ngCookies',
-    'ngStorage',
-    'ui.bootstrap',
-    'ngAnimate',
-    'ngSanitize',
-    'ui.router',
-    'restangular',
-    'pascalprecht.translate',
-    'app.core'
-]).config(['$stateProvider', function ($stateProvider) {
-        $stateProvider
-            .state('app.dashboard', {
-            templateUrl: '/tpl/dashboard.html',
-            url: '/dashboard',
-            resolve: loadSequence('jquery-sparkline', 'sparkline'),
-            title: 'Dashboard',
-            ncyBreadcrumb: {
-                label: 'Consola'
-            }
-        });
-    }
-])
-    .controller('SparklineCtrl', function ($scope) {
-    $scope.sales = [600, 923, 482, 1211, 490, 1125, 1487];
-    $scope.earnings = [400, 650, 886, 443, 502, 412, 353];
-    $scope.referrals = [4879, 6567, 5022, 5890, 9234, 7128, 4811];
-})
-    .controller('VisitsCtrl', function ($scope) {
-    $scope.data = {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-        datasets: [
-            {
-                label: 'My First dataset',
-                fillColor: 'rgba(220,220,220,0.2)',
-                strokeColor: 'rgba(220,220,220,1)',
-                pointColor: 'rgba(220,220,220,1)',
-                pointStrokeColor: '#fff',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgba(220,220,220,1)',
-                data: [65, 59, 80, 81, 56, 55, 40, 84, 64, 120, 132, 87]
-            },
-            {
-                label: 'My Second dataset',
-                fillColor: 'rgba(151,187,205,0.2)',
-                strokeColor: 'rgba(151,187,205,1)',
-                pointColor: 'rgba(151,187,205,1)',
-                pointStrokeColor: '#fff',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgba(151,187,205,1)',
-                data: [28, 48, 40, 19, 86, 27, 90, 102, 123, 145, 60, 161]
-            }
-        ]
-    };
-    $scope.options = {
-        maintainAspectRatio: false,
-        responsive: true,
-        scaleShowGridLines: true,
-        scaleGridLineColor: 'rgba(0,0,0,.05)',
-        scaleGridLineWidth: 1,
-        bezierCurve: false,
-        bezierCurveTension: 0.4,
-        pointDot: true,
-        pointDotRadius: 4,
-        pointDotStrokeWidth: 1,
-        pointHitDetectionRadius: 20,
-        datasetStroke: true,
-        datasetStrokeWidth: 2,
-        datasetFill: true,
-        onAnimationProgress: function () { },
-        onAnimationComplete: function () { },
-        legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
-    };
-})
-    .controller('SalesCtrl', function ($scope) {
-    $scope.data = {
-        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-        datasets: [
-            {
-                label: 'My First dataset',
-                fillColor: 'rgba(220,220,220,0.5)',
-                strokeColor: 'rgba(220,220,220,0.8)',
-                highlightFill: 'rgba(220,220,220,0.75)',
-                highlightStroke: 'rgba(220,220,220,1)',
-                data: [65, 59, 80, 81, 56, 55, 40]
-            },
-            {
-                label: 'My Second dataset',
-                fillColor: 'rgba(151,187,205,0.5)',
-                strokeColor: 'rgba(151,187,205,0.8)',
-                highlightFill: 'rgba(151,187,205,0.75)',
-                highlightStroke: 'rgba(151,187,205,1)',
-                data: [28, 48, 40, 19, 86, 27, 90]
-            }
-        ]
-    };
-    $scope.options = {
-        maintainAspectRatio: false,
-        responsive: true,
-        scaleBeginAtZero: true,
-        scaleShowGridLines: true,
-        scaleGridLineColor: "rgba(0,0,0,.05)",
-        scaleGridLineWidth: 1,
-        barShowStroke: true,
-        barStrokeWidth: 2,
-        barValueSpacing: 5,
-        barDatasetSpacing: 1,
-        legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].fillColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
-    };
-})
-    .controller('OnotherCtrl', function ($scope) {
-    $scope.data = [
-        {
-            value: 300,
-            color: '#F7464A',
-            highlight: '#FF5A5E',
-            label: 'Red'
-        },
-        {
-            value: 50,
-            color: '#46BFBD',
-            highlight: '#5AD3D1',
-            label: 'Green'
-        },
-        {
-            value: 100,
-            color: '#FDB45C',
-            highlight: '#FFC870',
-            label: 'Yellow'
-        }
-    ];
-    $scope.total = 450;
-    $scope.options = {
-        responsive: false,
-        segmentShowStroke: true,
-        segmentStrokeColor: '#fff',
-        segmentStrokeWidth: 2,
-        percentageInnerCutout: 50,
-        animationSteps: 100,
-        animationEasing: 'easeOutBounce',
-        animateRotate: true,
-        animateScale: false,
-        legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<segments.length; i++){%><li><span style="background-color:<%=segments[i].fillColor%>"></span><%if(segments[i].label){%><%=segments[i].label%><%}%></li><%}%></ul>'
-    };
-})
-    .controller('LastCtrl', function ($scope) {
-    $scope.data = {
-        labels: ['Eating', 'Drinking', 'Sleeping', 'Designing', 'Coding', 'Cycling', 'Running'],
-        datasets: [
-            {
-                label: 'My First dataset',
-                fillColor: 'rgba(220,220,220,0.2)',
-                strokeColor: 'rgba(220,220,220,1)',
-                pointColor: 'rgba(220,220,220,1)',
-                pointStrokeColor: '#fff',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgba(220,220,220,1)',
-                data: [65, 59, 90, 81, 56, 55, 40]
-            },
-            {
-                label: 'My Second dataset',
-                fillColor: 'rgba(151,187,205,0.2)',
-                strokeColor: 'rgba(151,187,205,1)',
-                pointColor: 'rgba(151,187,205,1)',
-                pointStrokeColor: '#fff',
-                pointHighlightFill: '#fff',
-                pointHighlightStroke: 'rgba(151,187,205,1)',
-                data: [28, 48, 40, 19, 96, 27, 100]
-            }
-        ]
-    };
-    $scope.options = {
-        responsive: true,
-        scaleShowLine: true,
-        angleShowLineOut: true,
-        scaleShowLabels: false,
-        scaleBeginAtZero: true,
-        angleLineColor: 'rgba(0,0,0,.1)',
-        angleLineWidth: 1,
-        pointLabelFontFamily: '"Arial"',
-        pointLabelFontStyle: 'normal',
-        pointLabelFontSize: 10,
-        pointLabelFontColor: '#666',
-        pointDot: true,
-        pointDotRadius: 3,
-        pointDotStrokeWidth: 1,
-        pointHitDetectionRadius: 20,
-        datasetStroke: true,
-        datasetStrokeWidth: 2,
-        datasetFill: true,
-        legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
-    };
-});
 angular.module('app.system', [])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
@@ -2212,165 +2304,6 @@ angular.module('app.system', [])
             }
         };
     }]);
-angular.module('app.core', [])
-    .constant('APP_MEDIAQUERY', {
-    'desktopXL': 1200,
-    'desktop': 992,
-    'tablet': 768,
-    'mobile': 480
-});
-var jsRequires = {
-    scripts: {
-        'login-soft': 'content/css/login-soft.css',
-        'modernizr': ['vendor/modernizr/modernizr.js'],
-        'spin': 'vendor/ladda/spin.min.js',
-        'perfect-scrollbar-plugin': ['vendor/perfect-scrollbar/perfect-scrollbar.min.js', 'vendor/perfect-scrollbar/perfect-scrollbar.min.css'],
-        'ladda': ['vendor/ladda/spin.min.js', 'vendor/ladda/ladda.min.js', 'vendor/ladda/ladda-themeless.min.css'],
-        'sweet-alert': ['vendor/sweet-alert/sweet-alert.min.js', 'vendor/sweet-alert/sweet-alert.css'],
-        'chartjs': 'vendor/chartjs/Chart.min.js',
-        'jquery-sparkline': 'vendor/sparkline/jquery.sparkline.min.js',
-        'ckeditor-plugin': 'vendor/ckeditor/ckeditor.js',
-        'jquery-nestable-plugin': ['vendor/ng-nestable/jquery.nestable.js', 'vendor/ng-nestable/jquery.nestable.css'],
-        'touchspin-plugin': 'vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js',
-        'bootstrapjs': 'bower_components/bootstrap/dist/js/bootstrap.min.js',
-        'jqueryui': ['bower_components/jquery-ui/jquery-ui.min.js', 'bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css'],
-        'jqGrid': ['scripts/grid.locale-es-ar.js', 'bower_components/jqgrid/js/jquery.jqGrid.min.js', 'bower_components/jqgrid/css/ui.jqgrid.css', 'Content/css/jqGrid.css'],
-        'select2': { files: ['bower_components/select2/select2.min.js', 'bower_components/select2/select2_locale_es.js', 'bower_components/select2/select2.css', 'Content/css/select2.css'], serie: true },
-        'kendoweb': { files: ['Content/lib/kendoui/kendo.web.min.js'] },
-        'htmlToPlaintext': 'assets/js/filters/htmlToPlaintext.js'
-    },
-    modules: [
-        {
-            name: 'dialogs.main',
-            insertBefore: '#ng_load_plugins_before',
-            files: ['bower_components/angular-dialog-service/dist/dialogs.min.css', 'bower_components/angular-dialog-service/dist/dialogs.min.js']
-        },
-        {
-            name: 'ng-backstretch',
-            files: ['bower_components/ng-backstretch/dist/ng-backstretch.min.js']
-        },
-        {
-            name: 'perfect_scrollbar',
-            files: ['vendor/perfect-scrollbar/angular-perfect-scrollbar.js']
-        },
-        {
-            name: 'alertify',
-            files: ['bower_components/ngAlertify/ngAlertify.js', 'bower_components/ngAlertify/alertify.min.css', 'bower_components/ngAlertify/alertify.default.css']
-        },
-        {
-            name: 'toaster',
-            files: ['bower_components/AngularJS-Toaster/toaster.js', 'bower_components/AngularJS-Toaster/toaster.css']
-        }, {
-            name: 'angularBootstrapNavTree',
-            files: ['vendor/angular-bootstrap-nav-tree/abn_tree_directive.js', 'vendor/angular-bootstrap-nav-tree/abn_tree.css']
-        }, {
-            name: 'angular-ladda',
-            files: ['vendor/ladda/angular-ladda.min.js']
-        }, {
-            name: 'ngTable',
-            files: ['vendor/ng-table/ng-table.min.js', 'vendor/ng-table/ng-table.min.css']
-        }, {
-            name: 'ui.select',
-            files: ['vendor/ui-select/select.min.js', 'vendor/ui-select/select.min.css', 'vendor/ui-select/select2.css', 'vendor/ui-select/select2-bootstrap.css', 'vendor/ui-select/selectize.bootstrap3.css']
-        }, {
-            name: 'ui.mask',
-            files: ['vendor/ui-utils/mask/mask.js']
-        }, {
-            name: 'angular-bootstrap-touchspin',
-            files: ['vendor/bootstrap-touchspin/angular.bootstrap-touchspin.js', 'vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css']
-        }, {
-            name: 'ngImgCrop',
-            files: ['vendor/ngImgCrop/ng-img-crop.js', 'vendor/ngImgCrop/ng-img-crop.css']
-        }, {
-            name: 'angularFileUpload',
-            files: ['vendor/angular-file-upload/angular-file-upload.min.js', 'vendor/angular-file-upload/directives.js']
-        }, {
-            name: 'ngAside',
-            files: ['vendor/angular-aside/angular-aside.min.js', 'vendor/angular-aside/angular-aside.min.css']
-        }, {
-            name: 'truncate',
-            files: ['vendor/angular-truncate/truncate.js']
-        }, {
-            name: 'oitozero.ngSweetAlert',
-            files: ['vendor/sweet-alert/ngSweetAlert.min.js']
-        }, {
-            name: 'monospaced.elastic',
-            files: ['vendor/angular-elastic/elastic.js']
-        }, {
-            name: 'ngMap',
-            files: ['vendor/angular-google-maps/ng-map.min.js']
-        }, {
-            name: 'tc.chartjs',
-            files: ['vendor/chartjs/tc-angular-chartjs.min.js']
-        }, {
-            name: 'sparkline',
-            files: ['vendor/sparkline/angular-sparkline.js']
-        }, {
-            name: 'flow',
-            files: ['vendor/ng-flow/ng-flow-standalone.min.js']
-        }, {
-            name: 'uiSwitch',
-            files: ['vendor/angular-ui-switch/angular-ui-switch.min.js', 'vendor/angular-ui-switch/angular-ui-switch.min.css']
-        }, {
-            name: 'ckeditor',
-            files: ['vendor/ckeditor/angular-ckeditor.min.js']
-        }, {
-            name: 'mwl.calendar',
-            files: ['vendor/angular-bootstrap-calendar/angular-bootstrap-calendar.js', 'vendor/angular-bootstrap-calendar/angular-bootstrap-calendar-tpls.js', 'vendor/angular-bootstrap-calendar/angular-bootstrap-calendar.min.css']
-        }, {
-            name: 'ng-nestable',
-            files: ['vendor/ng-nestable/angular-nestable.js']
-        }, {
-            name: 'vAccordion',
-            files: ['vendor/v-accordion/v-accordion.min.js', 'vendor/v-accordion/v-accordion.min.css']
-        }, {
-            name: 'xeditable',
-            files: ['vendor/angular-xeditable/xeditable.min.js', 'vendor/angular-xeditable/xeditable.css']
-        }, {
-            name: 'config-xeditable',
-            files: ['vendor/angular-xeditable/config-xeditable.js']
-        }, {
-            name: 'checklist-model',
-            files: ['vendor/checklist-model/checklist-model.js']
-        }, {
-            name: 'telerikreport',
-            files: ['ReportViewr/js/telerikReportViewer-9.1.15.731.min.js', 'ReportViewr/js/telerikReportViewer-9.1.15.731.min.css']
-        }]
-};
-function loadSequence() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i - 0] = arguments[_i];
-    }
-    return {
-        deps: ['$ocLazyLoad', '$q',
-            function ($ocLL, $q) {
-                var promise = $q.when(1);
-                for (var i = 0, len = args.length; i < len; i++) {
-                    promise = promiseThen(args[i]);
-                }
-                return promise;
-                function promiseThen(arg) {
-                    if (typeof arg == 'function')
-                        return promise.then(arg);
-                    else
-                        return promise.then(function () {
-                            var nowLoad = requiredData(arg);
-                            if (!nowLoad)
-                                return $.error('Route resolve: Bad resource name [' + arg + ']');
-                            return $ocLL.load(nowLoad);
-                        });
-                }
-                function requiredData(name) {
-                    if (jsRequires.modules)
-                        for (var m in jsRequires.modules)
-                            if (jsRequires.modules[m].name && jsRequires.modules[m].name === name)
-                                return jsRequires.modules[m];
-                    return jsRequires.scripts && jsRequires.scripts[name];
-                }
-            }]
-    };
-}
 'use strict';
 angular.element(document).ready(function ($http) {
     $http.get('/api/sessions/mysession.json').then(function (data) {
