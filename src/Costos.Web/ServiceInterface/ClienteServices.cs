@@ -69,6 +69,20 @@ namespace Keta.Web.ServiceInterface
             };
             return result;
         }
+
+        public object Post(ServiceModel.Cliente.DeleteMarca request)
+        {
+            var autos = Db.Select<Domain.MovilAtencion>(m => m.ClienteId == request.Id);
+            if (autos.Count == 0)
+            {
+                Db.DeleteById<Domain.Cliente>(request.Id);
+                return new { result = true };
+            }
+            else
+            {
+                return new { result = false };
+            }
+        }
     }
 }
 

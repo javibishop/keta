@@ -29,6 +29,11 @@ namespace Keta.ServiceModel
         {
         }
 
+          [Route("/servicios/clientes/delete/{Id}", "POST")]
+        public class DeleteMarca
+        {
+            public int Id { get; set; }
+        }
         public class QueryResult
         {
             public int Id { get; set; }

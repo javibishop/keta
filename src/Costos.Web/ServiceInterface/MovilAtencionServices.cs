@@ -69,6 +69,12 @@ namespace Keta.Web.ServiceInterface
             };
             return result;
         }
+
+        public object Post(ServiceModel.MovilAtencion.DeleteMovilAtencion request)
+        {
+            Db.DeleteById<Domain.MovilAtencion>(request.Id);
+            return new { result = true };
+        }
     }
 }
 

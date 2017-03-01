@@ -26,6 +26,19 @@ namespace Keta.Web.ServiceInterface
             request.Id = (byte)Db.Insert((Domain.Marca)request, true);
             return request;
         }
+        public object Post(ServiceModel.Marca.DeleteMarca request)
+        {
+            var autos = Db.Select<Domain.MovilAtencion>(m=> m.MarcaId == request.Id);
+            if (autos.Count == 0)
+            {
+                Db.DeleteById<Domain.MovilAtencion>(request.Id);
+                return new { result = true };
+            }
+            else
+            {
+                return new { result = false };
+            }
+        }
 
         public object Get(ServiceModel.Marca.Get request)
         {

@@ -1,162 +1,791 @@
-angular.module('app.core', [])
-    .constant('APP_MEDIAQUERY', {
-    'desktopXL': 1200,
-    'desktop': 992,
-    'tablet': 768,
-    'mobile': 480
-});
-var jsRequires = {
-    scripts: {
-        'login-soft': 'content/css/login-soft.css',
-        'modernizr': ['vendor/modernizr/modernizr.js'],
-        'spin': 'vendor/ladda/spin.min.js',
-        'perfect-scrollbar-plugin': ['vendor/perfect-scrollbar/perfect-scrollbar.min.js', 'vendor/perfect-scrollbar/perfect-scrollbar.min.css'],
-        'ladda': ['vendor/ladda/spin.min.js', 'vendor/ladda/ladda.min.js', 'vendor/ladda/ladda-themeless.min.css'],
-        'sweet-alert': ['vendor/sweet-alert/sweet-alert.min.js', 'vendor/sweet-alert/sweet-alert.css'],
-        'chartjs': 'vendor/chartjs/Chart.min.js',
-        'jquery-sparkline': 'vendor/sparkline/jquery.sparkline.min.js',
-        'ckeditor-plugin': 'vendor/ckeditor/ckeditor.js',
-        'jquery-nestable-plugin': ['vendor/ng-nestable/jquery.nestable.js', 'vendor/ng-nestable/jquery.nestable.css'],
-        'touchspin-plugin': 'vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js',
-        'bootstrapjs': 'bower_components/bootstrap/dist/js/bootstrap.min.js',
-        'jqueryui': ['bower_components/jquery-ui/jquery-ui.min.js', 'bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css'],
-        'jqGrid': ['scripts/grid.locale-es-ar.js', 'bower_components/jqgrid/js/jquery.jqGrid.min.js', 'bower_components/jqgrid/css/ui.jqgrid.css', 'Content/css/jqGrid.css'],
-        'select2': { files: ['bower_components/select2/select2.min.js', 'bower_components/select2/select2_locale_es.js', 'bower_components/select2/select2.css', 'Content/css/select2.css'], serie: true },
-        'kendoweb': { files: ['Content/lib/kendoui/kendo.web.min.js'] },
-        'htmlToPlaintext': 'assets/js/filters/htmlToPlaintext.js'
-    },
-    modules: [
-        {
-            name: 'dialogs.main',
-            insertBefore: '#ng_load_plugins_before',
-            files: ['bower_components/angular-dialog-service/dist/dialogs.min.css', 'bower_components/angular-dialog-service/dist/dialogs.min.js']
-        },
-        {
-            name: 'ng-backstretch',
-            files: ['bower_components/ng-backstretch/dist/ng-backstretch.min.js']
-        },
-        {
-            name: 'perfect_scrollbar',
-            files: ['vendor/perfect-scrollbar/angular-perfect-scrollbar.js']
-        },
-        {
-            name: 'alertify',
-            files: ['bower_components/ngAlertify/ngAlertify.js', 'bower_components/ngAlertify/alertify.min.css', 'bower_components/ngAlertify/alertify.default.css']
-        },
-        {
-            name: 'toaster',
-            files: ['bower_components/AngularJS-Toaster/toaster.js', 'bower_components/AngularJS-Toaster/toaster.css']
-        }, {
-            name: 'angularBootstrapNavTree',
-            files: ['vendor/angular-bootstrap-nav-tree/abn_tree_directive.js', 'vendor/angular-bootstrap-nav-tree/abn_tree.css']
-        }, {
-            name: 'angular-ladda',
-            files: ['vendor/ladda/angular-ladda.min.js']
-        }, {
-            name: 'ngTable',
-            files: ['vendor/ng-table/ng-table.min.js', 'vendor/ng-table/ng-table.min.css']
-        }, {
-            name: 'ui.select',
-            files: ['vendor/ui-select/select.min.js', 'vendor/ui-select/select.min.css', 'vendor/ui-select/select2.css', 'vendor/ui-select/select2-bootstrap.css', 'vendor/ui-select/selectize.bootstrap3.css']
-        }, {
-            name: 'ui.mask',
-            files: ['vendor/ui-utils/mask/mask.js']
-        }, {
-            name: 'angular-bootstrap-touchspin',
-            files: ['vendor/bootstrap-touchspin/angular.bootstrap-touchspin.js', 'vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css']
-        }, {
-            name: 'ngImgCrop',
-            files: ['vendor/ngImgCrop/ng-img-crop.js', 'vendor/ngImgCrop/ng-img-crop.css']
-        }, {
-            name: 'angularFileUpload',
-            files: ['vendor/angular-file-upload/angular-file-upload.min.js', 'vendor/angular-file-upload/directives.js']
-        }, {
-            name: 'ngAside',
-            files: ['vendor/angular-aside/angular-aside.min.js', 'vendor/angular-aside/angular-aside.min.css']
-        }, {
-            name: 'truncate',
-            files: ['vendor/angular-truncate/truncate.js']
-        }, {
-            name: 'oitozero.ngSweetAlert',
-            files: ['vendor/sweet-alert/ngSweetAlert.min.js']
-        }, {
-            name: 'monospaced.elastic',
-            files: ['vendor/angular-elastic/elastic.js']
-        }, {
-            name: 'ngMap',
-            files: ['vendor/angular-google-maps/ng-map.min.js']
-        }, {
-            name: 'tc.chartjs',
-            files: ['vendor/chartjs/tc-angular-chartjs.min.js']
-        }, {
-            name: 'sparkline',
-            files: ['vendor/sparkline/angular-sparkline.js']
-        }, {
-            name: 'flow',
-            files: ['vendor/ng-flow/ng-flow-standalone.min.js']
-        }, {
-            name: 'uiSwitch',
-            files: ['vendor/angular-ui-switch/angular-ui-switch.min.js', 'vendor/angular-ui-switch/angular-ui-switch.min.css']
-        }, {
-            name: 'ckeditor',
-            files: ['vendor/ckeditor/angular-ckeditor.min.js']
-        }, {
-            name: 'mwl.calendar',
-            files: ['vendor/angular-bootstrap-calendar/angular-bootstrap-calendar.js', 'vendor/angular-bootstrap-calendar/angular-bootstrap-calendar-tpls.js', 'vendor/angular-bootstrap-calendar/angular-bootstrap-calendar.min.css']
-        }, {
-            name: 'ng-nestable',
-            files: ['vendor/ng-nestable/angular-nestable.js']
-        }, {
-            name: 'vAccordion',
-            files: ['vendor/v-accordion/v-accordion.min.js', 'vendor/v-accordion/v-accordion.min.css']
-        }, {
-            name: 'xeditable',
-            files: ['vendor/angular-xeditable/xeditable.min.js', 'vendor/angular-xeditable/xeditable.css']
-        }, {
-            name: 'config-xeditable',
-            files: ['vendor/angular-xeditable/config-xeditable.js']
-        }, {
-            name: 'checklist-model',
-            files: ['vendor/checklist-model/checklist-model.js']
-        }, {
-            name: 'telerikreport',
-            files: ['ReportViewr/js/telerikReportViewer-9.1.15.731.min.js', 'ReportViewr/js/telerikReportViewer-9.1.15.731.min.css']
-        }]
-};
-function loadSequence() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i - 0] = arguments[_i];
+angular.module('app.keta', [
+    'ngCookies',
+    'ngStorage',
+    'ui.bootstrap',
+    'ngAnimate',
+    'ngSanitize',
+    'ui.router',
+    'restangular',
+    'pascalprecht.translate',
+    'app.core'
+])
+    .config(['$stateProvider', function ($stateProvider) {
+        $stateProvider
+            .state('app.keta', {
+            url: '/root',
+            template: '<data-ui-view />',
+            ncyBreadcrumb: {
+                label: 'CMG'
+            },
+            abstract: true
+        })
+            .state('app.keta.marcas', {
+            url: '/marcas',
+            controller: 'KetaMarcasListController',
+            templateUrl: 'tpl/marcas/list.html',
+            resolve: loadSequence('jqueryui', 'jqGrid', 'alertify'),
+            ncyBreadcrumb: {
+                parent: 'app.keta',
+                label: 'keta.marcas'
+            }
+        })
+            .state('app.keta.marcanew', {
+            url: '/marcas/new',
+            controller: 'KetaMarcaEditController',
+            templateUrl: 'tpl/marcas/edit.html',
+            resolve: loadSequence('select2'),
+            ncyBreadcrumb: {
+                parent: 'app.keta.marcas',
+                label: 'entity.new'
+            }
+        })
+            .state('app.keta.marcaedit', {
+            url: '/marcas/{marcaId}',
+            controller: 'KetaMarcaEditController',
+            templateUrl: 'tpl/marcas/edit.html',
+            resolve: loadSequence('select2'),
+            ncyBreadcrumb: {
+                parent: 'app.keta.marcas',
+                label: 'entity.edit'
+            }
+        })
+            .state('app.keta.clientes', {
+            url: '/clientes',
+            controller: 'KetaClientesListController',
+            templateUrl: 'tpl/clientes/list.html',
+            resolve: loadSequence('jqueryui', 'jqGrid', 'alertify'),
+            ncyBreadcrumb: {
+                parent: 'app.keta',
+                label: 'keta.clientes'
+            }
+        })
+            .state('app.keta.clientenew', {
+            url: '/clientes/new',
+            controller: 'KetaClienteEditController',
+            templateUrl: 'tpl/clientes/edit.html',
+            resolve: loadSequence('select2'),
+            ncyBreadcrumb: {
+                parent: 'app.keta.clientes',
+                label: 'entity.new'
+            }
+        })
+            .state('app.keta.clienteedit', {
+            url: '/clientes/{clienteId}',
+            controller: 'KetaClienteEditController',
+            templateUrl: 'tpl/clientes/edit.html',
+            resolve: loadSequence('select2'),
+            ncyBreadcrumb: {
+                parent: 'app.keta.clientes',
+                label: 'entity.edit'
+            }
+        })
+            .state('app.keta.movilatenciones', {
+            url: '/movilatenciones',
+            controller: 'KetaMovilAtencionesListController',
+            templateUrl: 'tpl/movilatenciones/list.html',
+            resolve: loadSequence('jqueryui', 'jqGrid', 'alertify'),
+            ncyBreadcrumb: {
+                parent: 'app.keta',
+                label: 'keta.movilatenciones'
+            }
+        })
+            .state('app.keta.movilatencionnew', {
+            url: '/movilatenciones/new',
+            controller: 'KetaMovilAtencionEditController',
+            templateUrl: 'tpl/movilatenciones/edit.html',
+            resolve: loadSequence('select2'),
+            ncyBreadcrumb: {
+                parent: 'app.keta.movilatenciones',
+                label: 'entity.new'
+            }
+        })
+            .state('app.keta.movilatencionedit', {
+            url: '/movilatenciones/{movilatencionId}',
+            controller: 'KetaMovilAtencionEditController',
+            templateUrl: 'tpl/movilatenciones/edit.html',
+            resolve: loadSequence('select2'),
+            ncyBreadcrumb: {
+                parent: 'app.keta.movilatenciones',
+                label: 'entity.edit'
+            }
+        });
     }
+])
+    .controller('KetaMarcasListController', ['$scope', '$state', '$translate', function ($scope, $state, $translate) {
+        $scope.params = {
+            selectedItems: []
+        };
+        $scope.new = function () {
+            $state.go('app.keta.marcanew');
+        };
+    }])
+    .controller('KetaMarcaEditController', ['$scope', '$translate', '$state', '$stateParams', 'Restangular', function ($scope, $translate, $state, $stateParams, Restangular) {
+        var id = $stateParams.marcaId;
+        function load() {
+            if (id) {
+                Restangular.one('servicios').one('marcas', id).get().then(function (result) {
+                    $scope.marca = result;
+                });
+            }
+        }
+        $scope.save = function () {
+            if (id) {
+                $scope.marca.put().then(function () { $state.go('app.keta.marcas'); });
+            }
+            else {
+                var datos = $scope.marca;
+                Restangular.service('servicios/marcas').post(datos).then(function () { $state.go('app.keta.marcas'); });
+            }
+        };
+        load();
+    }
+])
+    .controller('KetaClientesListController', ['$scope', '$state', '$translate', function ($scope, $state, $translate) {
+        $scope.params = {
+            selectedItems: []
+        };
+        $scope.new = function () {
+            $state.go('app.keta.clientenew');
+        };
+    }])
+    .controller('KetaClienteEditController', ['$scope', '$translate', '$state', '$stateParams', 'Restangular', function ($scope, $translate, $state, $stateParams, Restangular) {
+        var id = $stateParams.clienteId;
+        function load() {
+            if (id) {
+                Restangular.one('servicios').one('clientes', id).get().then(function (result) {
+                    $scope.cliente = result;
+                });
+            }
+        }
+        $scope.save = function () {
+            if (id) {
+                $scope.cliente.put().then(function () { $state.go('app.keta.clientes'); });
+            }
+            else {
+                var datos = $scope.cliente;
+                Restangular.service('servicios/clientes').post(datos).then(function () { $state.go('app.keta.clientes'); });
+            }
+        };
+        load();
+    }
+])
+    .controller('KetaMovilAtencionesListController', ['$scope', '$state', '$translate', function ($scope, $state, $translate) {
+        $scope.params = {
+            selectedItems: []
+        };
+        $scope.new = function () {
+            $state.go('app.keta.movilatencionnew');
+        };
+    }])
+    .controller('KetaMovilAtencionEditController', ['$scope', '$translate', '$state', '$stateParams', 'Restangular', function ($scope, $translate, $state, $stateParams, Restangular) {
+        var id = $stateParams.movilatencionId;
+        function load() {
+            if (id) {
+                Restangular.one('servicios').one('movilatenciones', id).get().then(function (result) {
+                    result.fecha = new Date(result.fecha);
+                    $scope.movilatencion = result;
+                });
+            }
+        }
+        $scope.save = function () {
+            var fecha = new Date($scope.movilatencion.fecha);
+            $scope.movilatencion.fecha = fecha;
+            if (id) {
+                $scope.movilatencion.put().then(function () { $state.go('app.keta.movilatenciones'); });
+            }
+            else {
+                var datos = $scope.movilatencion;
+                Restangular.service('servicios/movilatenciones').post(datos).then(function () { $state.go('app.keta.movilatenciones'); });
+            }
+        };
+        load();
+    }
+])
+    .directive('ketaMarcasGrid', function ($state, Restangular, alertify) {
     return {
-        deps: ['$ocLazyLoad', '$q',
-            function ($ocLL, $q) {
-                var promise = $q.when(1);
-                for (var i = 0, len = args.length; i < len; i++) {
-                    promise = promiseThen(args[i]);
-                }
-                return promise;
-                function promiseThen(arg) {
-                    if (typeof arg == 'function')
-                        return promise.then(arg);
-                    else
-                        return promise.then(function () {
-                            var nowLoad = requiredData(arg);
-                            if (!nowLoad)
-                                return $.error('Route resolve: Bad resource name [' + arg + ']');
-                            return $ocLL.load(nowLoad);
+        restrict: 'A',
+        scope: { height: '@', selectedItems: '=' },
+        link: function (scope, element, attrs, ctrl) {
+            var gridElementName = 'ketaMarcasGrid';
+            var pagerElementName = gridElementName + 'Pager';
+            var gridElement = angular.element('<table></table>');
+            gridElement.attr('id', gridElementName);
+            var pagerElement = angular.element('<div></div>');
+            pagerElement.attr('id', pagerElementName);
+            element.append(gridElement);
+            element.append(pagerElement);
+            scope.height = scope.height || 450;
+            var colNames = ['', '', 'Codigo', 'Descripcion'];
+            var colModel = [
+                {
+                    name: 'editCommand',
+                    index: 'editCommand',
+                    width: 25,
+                    align: 'center',
+                    fixed: true,
+                    sortable: false,
+                    search: false,
+                    formatter: function () { return '<i class="fa fa-caret-right hand"></i>'; }
+                },
+                {
+                    name: 'deleteCommand',
+                    index: 'deleteCommand',
+                    width: 25,
+                    align: 'center',
+                    fixed: true,
+                    sortable: false,
+                    search: false,
+                    formatter: function () { return '<i class="fa fa-times hand"></i>'; }
+                },
+                { name: 'codigo', index: 'codigo', search: true, width: 150, fixed: true },
+                { name: 'descripcion', index: 'descripcion', search: true, width: 400, fixed: true }
+            ];
+            gridElement.jqGrid({
+                regional: 'es-ar',
+                url: '/api/servicios/marcas.json',
+                datatype: 'json',
+                height: scope.height,
+                autowidth: true,
+                colNames: colNames,
+                colModel: colModel,
+                rowNum: 100,
+                scroll: false,
+                loadonce: 'false',
+                mtype: 'GET',
+                gridview: true,
+                pager: pagerElementName,
+                viewrecords: true,
+                jsonReader: {
+                    page: function (obj) { return ((obj.offset / 100) + 1); },
+                    total: function (obj) { return ((obj.total / 100) + (obj.total % 100 > 0 ? 1 : 0)); },
+                    records: 'total',
+                    repeatitems: false,
+                    root: 'results'
+                },
+                onCellSelect: function (rowId, iCol, cellcontent, e) {
+                    if (iCol === 0) {
+                        var stateName = 'app.keta.marcaedit';
+                        $state.go(stateName, { marcaId: rowId });
+                        return false;
+                    }
+                    if (iCol === 1) {
+                        alertify.confirm("Desea eliminar el registro?.", function (e) {
+                            if (e) {
+                                Restangular.one('servicios').one('marcas').one('delete').post(rowId).then(function (result) {
+                                    if (result.result == true)
+                                        $state.reload();
+                                    else
+                                        alert("No se pudo borrar la marca.");
+                                });
+                            }
                         });
+                    }
+                },
+                beforeSelectRow: function (rowid, e) {
+                    return false;
                 }
-                function requiredData(name) {
-                    if (jsRequires.modules)
-                        for (var m in jsRequires.modules)
-                            if (jsRequires.modules[m].name && jsRequires.modules[m].name === name)
-                                return jsRequires.modules[m];
-                    return jsRequires.scripts && jsRequires.scripts[name];
-                }
-            }]
+            });
+            gridElement.jqGrid('navGrid', '#' + pagerElementName, {
+                del: false,
+                add: false,
+                edit: false
+            }, {}, {}, {}, { multipleSearch: false });
+            gridElement.jqGrid('filterToolbar', { autosearch: true, searchOperators: false });
+            gridElement.jqGrid('bindKeys');
+        }
     };
-}
+})
+    .directive('ketaMarcaLookup', ['$location', function ($location) {
+        return {
+            restrict: 'A',
+            require: 'ngModel',
+            link: function (scope, element, attr, ctrl) {
+                if (!ctrl)
+                    return;
+                var required = attr.required ? attr.required : false;
+                ctrl.$render = function () {
+                    element.val(scope.$eval(attr.ngModel));
+                    element.select2({
+                        placeholder: 'Seleccione una Marca',
+                        allowClear: !required,
+                        initSelection: function (element1, callback) {
+                            if (ctrl.$modelValue) {
+                                var url = '/api/servicios/marcas/' + ctrl.$modelValue;
+                                $.getJSON(url, { format: 'json' }, function (data) {
+                                    callback({ id: data.id, text: data.codigo });
+                                });
+                            }
+                        },
+                        ajax: {
+                            url: '/api/servicios/marcas/lookup?format=json',
+                            dataType: 'json',
+                            quietMillis: 100,
+                            data: function (term, page) {
+                                return {
+                                    q: term,
+                                    pageSize: 15,
+                                    page: page
+                                };
+                            },
+                            results: function (data, page) {
+                                var more = (page * 10) < data.total;
+                                return { results: data.data, more: more };
+                            }
+                        }
+                    });
+                };
+                element.bind('change', function () {
+                    scope.$apply(function () {
+                        var data = element.select2('data');
+                        ctrl.$setViewValue(data ? data.id : null);
+                    });
+                });
+                attr.$observe('disabled', function (value) {
+                    element.select2(value && 'disable' || 'enable');
+                });
+            }
+        };
+    }])
+    .directive('ketaClientesGrid', function ($state, Restangular, alertify) {
+    return {
+        restrict: 'A',
+        scope: { height: '@', selectedItems: '=' },
+        link: function (scope, element, attrs, ctrl) {
+            var gridElementName = 'ketaClientesGrid';
+            var pagerElementName = gridElementName + 'Pager';
+            var gridElement = angular.element('<table></table>');
+            gridElement.attr('id', gridElementName);
+            var pagerElement = angular.element('<div></div>');
+            pagerElement.attr('id', pagerElementName);
+            element.append(gridElement);
+            element.append(pagerElement);
+            scope.height = scope.height || 450;
+            var colNames = ['', '', 'Apellido', 'Nombre', 'Telefono', 'Direccion'];
+            var colModel = [
+                {
+                    name: 'editCommand',
+                    index: 'editCommand',
+                    width: 25,
+                    align: 'center',
+                    fixed: true,
+                    sortable: false,
+                    search: false,
+                    formatter: function () { return '<i class="fa fa-caret-right hand"></i>'; }
+                },
+                {
+                    name: 'deleteCommand',
+                    index: 'deleteCommand',
+                    width: 25,
+                    align: 'center',
+                    fixed: true,
+                    sortable: false,
+                    search: false,
+                    formatter: function () { return '<i class="fa fa-times hand"></i>'; }
+                },
+                { name: 'apellido', index: 'apellido', search: true, width: 150, fixed: true },
+                { name: 'nombre', index: 'nombre', search: true, width: 150, fixed: true },
+                { name: 'telefono', index: 'telefono', search: true, width: 150, fixed: true },
+                { name: 'direccion', index: 'direccion', search: true, width: 150, fixed: true }
+            ];
+            gridElement.jqGrid({
+                regional: 'es-ar',
+                url: '/api/servicios/clientes.json',
+                datatype: 'json',
+                height: scope.height,
+                autowidth: true,
+                colNames: colNames,
+                colModel: colModel,
+                rowNum: 100,
+                scroll: false,
+                loadonce: 'false',
+                mtype: 'GET',
+                gridview: true,
+                pager: pagerElementName,
+                viewrecords: true,
+                jsonReader: {
+                    page: function (obj) { return ((obj.offset / 100) + 1); },
+                    total: function (obj) { return ((obj.total / 100) + (obj.total % 100 > 0 ? 1 : 0)); },
+                    records: 'total',
+                    repeatitems: false,
+                    root: 'results'
+                },
+                onCellSelect: function (rowId, iCol, cellcontent, e) {
+                    if (iCol === 0) {
+                        var stateName = 'app.keta.clienteedit';
+                        $state.go(stateName, { clienteId: rowId });
+                        return false;
+                    }
+                    if (iCol === 1) {
+                        alertify.confirm("Desea eliminar el registro?.", function (e) {
+                            if (e) {
+                                Restangular.one('servicios').one('clientes').one('delete').post(rowId).then(function (result) {
+                                    if (result.result == true)
+                                        $state.reload();
+                                    else
+                                        alert("No se pudo borrar el cliente.");
+                                });
+                            }
+                        });
+                    }
+                },
+                beforeSelectRow: function (rowid, e) {
+                    return false;
+                }
+            });
+            gridElement.jqGrid('navGrid', '#' + pagerElementName, {
+                del: false,
+                add: false,
+                edit: false
+            }, {}, {}, {}, { multipleSearch: false });
+            gridElement.jqGrid('filterToolbar', { autosearch: true, searchOperators: false });
+            gridElement.jqGrid('bindKeys');
+        }
+    };
+})
+    .directive('ketaClienteLookup', ['$location', function ($location) {
+        return {
+            restrict: 'A',
+            require: 'ngModel',
+            link: function (scope, element, attr, ctrl) {
+                if (!ctrl)
+                    return;
+                var required = attr.required ? attr.required : false;
+                ctrl.$render = function () {
+                    element.val(scope.$eval(attr.ngModel));
+                    element.select2({
+                        placeholder: 'Seleccione una Cliente',
+                        allowClear: !required,
+                        initSelection: function (element1, callback) {
+                            if (ctrl.$modelValue) {
+                                var url = '/api/servicios/clientes/' + ctrl.$modelValue;
+                                $.getJSON(url, { format: 'json' }, function (data) {
+                                    callback({ id: data.id, text: data.nombreCompleto });
+                                });
+                            }
+                        },
+                        ajax: {
+                            url: '/api/servicios/clientes/lookup?format=json',
+                            dataType: 'json',
+                            quietMillis: 100,
+                            data: function (term, page) {
+                                return {
+                                    q: term,
+                                    pageSize: 15,
+                                    page: page
+                                };
+                            },
+                            results: function (data, page) {
+                                var more = (page * 10) < data.total;
+                                return { results: data.data, more: more };
+                            }
+                        }
+                    });
+                };
+                element.bind('change', function () {
+                    scope.$apply(function () {
+                        var data = element.select2('data');
+                        ctrl.$setViewValue(data ? data.id : null);
+                    });
+                });
+                attr.$observe('disabled', function (value) {
+                    element.select2(value && 'disable' || 'enable');
+                });
+            }
+        };
+    }])
+    .directive('ketaMovilAtencionesGrid', function ($state, Restangular, alertify) {
+    return {
+        restrict: 'A',
+        scope: { height: '@', selectedItems: '=' },
+        link: function (scope, element, attrs, ctrl) {
+            var gridElementName = 'ketaMovilAtencionesGrid';
+            var pagerElementName = gridElementName + 'Pager';
+            var gridElement = angular.element('<table></table>');
+            gridElement.attr('id', gridElementName);
+            var pagerElement = angular.element('<div></div>');
+            pagerElement.attr('id', pagerElementName);
+            element.append(gridElement);
+            element.append(pagerElement);
+            scope.height = scope.height || 450;
+            var colNames = ['', '', 'Patente', 'Marca', 'Modelo', 'Nombre', 'Apellido', 'Telefono', 'Fecha'];
+            var colModel = [
+                {
+                    name: 'editCommand',
+                    index: 'editCommand',
+                    width: 25,
+                    align: 'center',
+                    fixed: true,
+                    sortable: false,
+                    search: false,
+                    formatter: function () { return '<i class="fa fa-caret-right hand"></i>'; }
+                },
+                {
+                    name: 'deleteCommand',
+                    index: 'deleteCommand',
+                    width: 25,
+                    align: 'center',
+                    fixed: true,
+                    sortable: false,
+                    search: false,
+                    formatter: function () { return '<i class="fa fa-times hand"></i>'; }
+                },
+                { name: 'patente', index: 'patente', search: true, width: 150, fixed: true },
+                { name: 'marcaCodigo', index: 'marcaCodigo', search: true, width: 150, fixed: true },
+                { name: 'modelo', index: 'modelo', search: true, width: 150, fixed: true },
+                { name: 'clienteNombre', index: 'clienteNombre', search: true, width: 150, fixed: true },
+                { name: 'clienteApellido', index: 'clienteApellido', search: true, width: 150, fixed: true },
+                { name: 'clienteTelefono', index: 'clienteTelefono', search: true, width: 150, fixed: true },
+                { name: 'fecha', index: 'fecha', search: true, width: 150, fixed: true },
+            ];
+            gridElement.jqGrid({
+                regional: 'es-ar',
+                url: '/api/servicios/movilatenciones.json',
+                datatype: 'json',
+                height: scope.height,
+                autowidth: true,
+                colNames: colNames,
+                colModel: colModel,
+                rowNum: 100,
+                scroll: false,
+                loadonce: 'false',
+                mtype: 'GET',
+                gridview: true,
+                pager: pagerElementName,
+                viewrecords: true,
+                jsonReader: {
+                    page: function (obj) { return ((obj.offset / 100) + 1); },
+                    total: function (obj) { return ((obj.total / 100) + (obj.total % 100 > 0 ? 1 : 0)); },
+                    records: 'total',
+                    repeatitems: false,
+                    root: 'results'
+                },
+                onCellSelect: function (rowId, iCol, cellcontent, e) {
+                    if (iCol === 0) {
+                        var stateName = 'app.keta.movilatencionedit';
+                        $state.go(stateName, { movilatencionId: rowId });
+                        return false;
+                    }
+                    if (iCol === 1) {
+                        alertify.confirm("Desea eliminar el registro?.", function (e) {
+                            if (e) {
+                                Restangular.one('servicios').one('movilatenciones').one('delete').post(rowId).then(function (result) {
+                                    if (result.result == true)
+                                        $state.reload();
+                                    else
+                                        alert("No se pudo borrar el cliente.");
+                                });
+                            }
+                        });
+                    }
+                },
+                beforeSelectRow: function (rowid, e) {
+                    return false;
+                }
+            });
+            gridElement.jqGrid('navGrid', '#' + pagerElementName, {
+                del: false,
+                add: false,
+                edit: false
+            }, {}, {}, {}, { multipleSearch: false });
+            gridElement.jqGrid('filterToolbar', { autosearch: true, searchOperators: false });
+            gridElement.jqGrid('bindKeys');
+        }
+    };
+})
+    .directive('ketaMovilAtencionLookup', ['$location', function ($location) {
+        return {
+            restrict: 'A',
+            require: 'ngModel',
+            link: function (scope, element, attr, ctrl) {
+                if (!ctrl)
+                    return;
+                var required = attr.required ? attr.required : false;
+                ctrl.$render = function () {
+                    element.val(scope.$eval(attr.ngModel));
+                    element.select2({
+                        placeholder: 'Seleccione una Movil',
+                        allowClear: !required,
+                        initSelection: function (element1, callback) {
+                            if (ctrl.$modelValue) {
+                                var url = '/api/servicios/movilatenciones/' + ctrl.$modelValue;
+                                $.getJSON(url, { format: 'json' }, function (data) {
+                                    callback({ id: data.id, text: data.codigo });
+                                });
+                            }
+                        },
+                        ajax: {
+                            url: '/api/servicios/movilatenciones/lookup?format=json',
+                            dataType: 'json',
+                            quietMillis: 100,
+                            data: function (term, page) {
+                                return {
+                                    q: term,
+                                    pageSize: 15,
+                                    page: page
+                                };
+                            },
+                            results: function (data, page) {
+                                var more = (page * 10) < data.total;
+                                return { results: data.data, more: more };
+                            }
+                        }
+                    });
+                };
+                element.bind('change', function () {
+                    scope.$apply(function () {
+                        var data = element.select2('data');
+                        ctrl.$setViewValue(data ? data.id : null);
+                    });
+                });
+                attr.$observe('disabled', function (value) {
+                    element.select2(value && 'disable' || 'enable');
+                });
+            }
+        };
+    }]);
+var _this = this;
+angular.module('app.directives', [])
+    .directive('ngSpinnerBar', ['$rootScope',
+    function ($rootScope) {
+        return {
+            link: function (scope, element, attrs) {
+                element.addClass('hide');
+                $rootScope.$on('$stateChangeStart', function () {
+                    element.removeClass('hide');
+                });
+                $rootScope.$on('$stateChangeSuccess', function () {
+                    element.addClass('hide');
+                    $('body').removeClass('page-on-load');
+                });
+                $rootScope.$on('$stateNotFound', function () {
+                    element.addClass('hide');
+                });
+                $rootScope.$on('$stateChangeError', function () {
+                    element.addClass('hide');
+                });
+            }
+        };
+    }
+])
+    .directive('a', function () {
+    return {
+        restrict: 'E',
+        link: function (scope, elem, attrs) {
+            if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
+                elem.on('click', function (e) {
+                    e.preventDefault();
+                });
+            }
+        }
+    };
+})
+    .directive('checklistModel', ['$parse', '$compile', function ($parse, $compile) {
+        function contains(arr, item, comparator) {
+            if (angular.isArray(arr)) {
+                for (var i = arr.length; i--;) {
+                    if (comparator(arr[i], item)) {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+        function add(arr, item, comparator) {
+            arr = angular.isArray(arr) ? arr : [];
+            if (!contains(arr, item, comparator)) {
+                arr.push(item);
+            }
+            return arr;
+        }
+        function remove(arr, item, comparator) {
+            if (angular.isArray(arr)) {
+                for (var i = arr.length; i--;) {
+                    if (comparator(arr[i], item)) {
+                        arr.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+            return arr;
+        }
+        function postLinkFn(scope, elem, attrs) {
+            $compile(elem)(scope);
+            var getter = $parse(attrs.checklistModel);
+            var setter = getter.assign;
+            var checklistChange = $parse(attrs.checklistChange);
+            var value = $parse(attrs.checklistValue)(scope.$parent);
+            var comparator = angular.equals;
+            if (attrs.hasOwnProperty('checklistComparator')) {
+                comparator = $parse(attrs.checklistComparator)(scope.$parent);
+            }
+            scope.$watch('checked', function (newValue, oldValue) {
+                if (newValue === oldValue) {
+                    return;
+                }
+                var current = getter(scope.$parent);
+                if (newValue === true) {
+                    setter(scope.$parent, add(current, value, comparator));
+                }
+                else {
+                    setter(scope.$parent, remove(current, value, comparator));
+                }
+                if (checklistChange) {
+                    checklistChange(scope);
+                }
+            });
+            function setChecked(newArr, oldArr) {
+                scope.checked = contains(newArr, value, comparator);
+            }
+            if (angular.isFunction(scope.$parent.$watchCollection)) {
+                scope.$parent.$watchCollection(attrs.checklistModel, setChecked);
+            }
+            else {
+                scope.$parent.$watch(attrs.checklistModel, setChecked, true);
+            }
+        }
+        return {
+            restrict: 'A',
+            priority: 1000,
+            terminal: true,
+            scope: true,
+            compile: function (tElement, tAttrs) {
+                if (tElement[0].tagName !== 'INPUT' || tAttrs.type !== 'checkbox') {
+                    throw 'checklist-model should be applied to `input[type="checkbox"]`.';
+                }
+                if (!tAttrs.checklistValue) {
+                    throw 'You should provide `checklist-value`.';
+                }
+                tElement.removeAttr('checklist-model');
+                tElement.attr('ng-model', 'checked');
+                return postLinkFn;
+            }
+        };
+    }])
+    .directive('report-viewer', function () {
+    return {
+        restrict: 'E',
+        templateUrl: 'app/directives/Report/template.html',
+        link: function (scope, element, attrs) {
+            element.telerik_ReportViewer({
+                error: function (data) {
+                    alert(data);
+                },
+                reportSource: {
+                    report: 'Reports.blankReport, Reports'
+                },
+                serviceUrl: '/api/reports/',
+                templateUrl: '/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html',
+                ready: function () {
+                    _this.refreshReport();
+                }
+            });
+        },
+        scope: {
+            content: '=',
+            reportname: '@reportname'
+        }
+    };
+});
 angular.module('app.dashboard', [
     'ngCookies',
     'ngStorage',
@@ -350,728 +979,6 @@ angular.module('app.dashboard', [
         legendTemplate: '<ul class="tc-chart-js-legend"><% for (var i=0; i<datasets.length; i++){%><li><span style="background-color:<%=datasets[i].strokeColor%>"></span><%if(datasets[i].label){%><%=datasets[i].label%><%}%></li><%}%></ul>'
     };
 });
-var _this = this;
-angular.module('app.directives', [])
-    .directive('ngSpinnerBar', ['$rootScope',
-    function ($rootScope) {
-        return {
-            link: function (scope, element, attrs) {
-                element.addClass('hide');
-                $rootScope.$on('$stateChangeStart', function () {
-                    element.removeClass('hide');
-                });
-                $rootScope.$on('$stateChangeSuccess', function () {
-                    element.addClass('hide');
-                    $('body').removeClass('page-on-load');
-                });
-                $rootScope.$on('$stateNotFound', function () {
-                    element.addClass('hide');
-                });
-                $rootScope.$on('$stateChangeError', function () {
-                    element.addClass('hide');
-                });
-            }
-        };
-    }
-])
-    .directive('a', function () {
-    return {
-        restrict: 'E',
-        link: function (scope, elem, attrs) {
-            if (attrs.ngClick || attrs.href === '' || attrs.href === '#') {
-                elem.on('click', function (e) {
-                    e.preventDefault();
-                });
-            }
-        }
-    };
-})
-    .directive('checklistModel', ['$parse', '$compile', function ($parse, $compile) {
-        function contains(arr, item, comparator) {
-            if (angular.isArray(arr)) {
-                for (var i = arr.length; i--;) {
-                    if (comparator(arr[i], item)) {
-                        return true;
-                    }
-                }
-            }
-            return false;
-        }
-        function add(arr, item, comparator) {
-            arr = angular.isArray(arr) ? arr : [];
-            if (!contains(arr, item, comparator)) {
-                arr.push(item);
-            }
-            return arr;
-        }
-        function remove(arr, item, comparator) {
-            if (angular.isArray(arr)) {
-                for (var i = arr.length; i--;) {
-                    if (comparator(arr[i], item)) {
-                        arr.splice(i, 1);
-                        break;
-                    }
-                }
-            }
-            return arr;
-        }
-        function postLinkFn(scope, elem, attrs) {
-            $compile(elem)(scope);
-            var getter = $parse(attrs.checklistModel);
-            var setter = getter.assign;
-            var checklistChange = $parse(attrs.checklistChange);
-            var value = $parse(attrs.checklistValue)(scope.$parent);
-            var comparator = angular.equals;
-            if (attrs.hasOwnProperty('checklistComparator')) {
-                comparator = $parse(attrs.checklistComparator)(scope.$parent);
-            }
-            scope.$watch('checked', function (newValue, oldValue) {
-                if (newValue === oldValue) {
-                    return;
-                }
-                var current = getter(scope.$parent);
-                if (newValue === true) {
-                    setter(scope.$parent, add(current, value, comparator));
-                }
-                else {
-                    setter(scope.$parent, remove(current, value, comparator));
-                }
-                if (checklistChange) {
-                    checklistChange(scope);
-                }
-            });
-            function setChecked(newArr, oldArr) {
-                scope.checked = contains(newArr, value, comparator);
-            }
-            if (angular.isFunction(scope.$parent.$watchCollection)) {
-                scope.$parent.$watchCollection(attrs.checklistModel, setChecked);
-            }
-            else {
-                scope.$parent.$watch(attrs.checklistModel, setChecked, true);
-            }
-        }
-        return {
-            restrict: 'A',
-            priority: 1000,
-            terminal: true,
-            scope: true,
-            compile: function (tElement, tAttrs) {
-                if (tElement[0].tagName !== 'INPUT' || tAttrs.type !== 'checkbox') {
-                    throw 'checklist-model should be applied to `input[type="checkbox"]`.';
-                }
-                if (!tAttrs.checklistValue) {
-                    throw 'You should provide `checklist-value`.';
-                }
-                tElement.removeAttr('checklist-model');
-                tElement.attr('ng-model', 'checked');
-                return postLinkFn;
-            }
-        };
-    }])
-    .directive('report-viewer', function () {
-    return {
-        restrict: 'E',
-        templateUrl: 'app/directives/Report/template.html',
-        link: function (scope, element, attrs) {
-            element.telerik_ReportViewer({
-                error: function (data) {
-                    alert(data);
-                },
-                reportSource: {
-                    report: 'Reports.blankReport, Reports'
-                },
-                serviceUrl: '/api/reports/',
-                templateUrl: '/ReportViewer/templates/telerikReportViewerTemplate-9.0.15.324.html',
-                ready: function () {
-                    _this.refreshReport();
-                }
-            });
-        },
-        scope: {
-            content: '=',
-            reportname: '@reportname'
-        }
-    };
-});
-angular.module('app.keta', [
-    'ngCookies',
-    'ngStorage',
-    'ui.bootstrap',
-    'ngAnimate',
-    'ngSanitize',
-    'ui.router',
-    'restangular',
-    'pascalprecht.translate',
-    'app.core'
-])
-    .config(['$stateProvider', function ($stateProvider) {
-        $stateProvider
-            .state('app.keta', {
-            url: '/root',
-            template: '<data-ui-view />',
-            ncyBreadcrumb: {
-                label: 'CMG'
-            },
-            abstract: true
-        })
-            .state('app.keta.marcas', {
-            url: '/marcas',
-            controller: 'KetaMarcasListController',
-            templateUrl: 'tpl/marcas/list.html',
-            resolve: loadSequence('jqueryui', 'jqGrid'),
-            ncyBreadcrumb: {
-                parent: 'app.keta',
-                label: 'keta.marcas'
-            }
-        })
-            .state('app.keta.marcanew', {
-            url: '/marcas/new',
-            controller: 'KetaMarcaEditController',
-            templateUrl: 'tpl/marcas/edit.html',
-            resolve: loadSequence('select2'),
-            ncyBreadcrumb: {
-                parent: 'app.keta.marcas',
-                label: 'entity.new'
-            }
-        })
-            .state('app.keta.marcaedit', {
-            url: '/marcas/{marcaId}',
-            controller: 'KetaMarcaEditController',
-            templateUrl: 'tpl/marcas/edit.html',
-            resolve: loadSequence('select2'),
-            ncyBreadcrumb: {
-                parent: 'app.keta.marcas',
-                label: 'entity.edit'
-            }
-        })
-            .state('app.keta.clientes', {
-            url: '/clientes',
-            controller: 'KetaClientesListController',
-            templateUrl: 'tpl/clientes/list.html',
-            resolve: loadSequence('jqueryui', 'jqGrid'),
-            ncyBreadcrumb: {
-                parent: 'app.keta',
-                label: 'keta.clientes'
-            }
-        })
-            .state('app.keta.clientenew', {
-            url: '/clientes/new',
-            controller: 'KetaClienteEditController',
-            templateUrl: 'tpl/clientes/edit.html',
-            resolve: loadSequence('select2'),
-            ncyBreadcrumb: {
-                parent: 'app.keta.clientes',
-                label: 'entity.new'
-            }
-        })
-            .state('app.keta.clienteedit', {
-            url: '/clientes/{clienteId}',
-            controller: 'KetaClienteEditController',
-            templateUrl: 'tpl/clientes/edit.html',
-            resolve: loadSequence('select2'),
-            ncyBreadcrumb: {
-                parent: 'app.keta.clientes',
-                label: 'entity.edit'
-            }
-        })
-            .state('app.keta.movilatenciones', {
-            url: '/movilatenciones',
-            controller: 'KetaMovilAtencionesListController',
-            templateUrl: 'tpl/movilatenciones/list.html',
-            resolve: loadSequence('jqueryui', 'jqGrid'),
-            ncyBreadcrumb: {
-                parent: 'app.keta',
-                label: 'keta.movilatenciones'
-            }
-        })
-            .state('app.keta.movilatencionnew', {
-            url: '/movilatenciones/new',
-            controller: 'KetaMovilAtencionEditController',
-            templateUrl: 'tpl/movilatenciones/edit.html',
-            resolve: loadSequence('select2'),
-            ncyBreadcrumb: {
-                parent: 'app.keta.movilatenciones',
-                label: 'entity.new'
-            }
-        })
-            .state('app.keta.movilatencionedit', {
-            url: '/movilatenciones/{movilatencionId}',
-            controller: 'KetaMovilAtencionEditController',
-            templateUrl: 'tpl/movilatenciones/edit.html',
-            resolve: loadSequence('select2'),
-            ncyBreadcrumb: {
-                parent: 'app.keta.movilatenciones',
-                label: 'entity.edit'
-            }
-        });
-    }
-])
-    .controller('KetaMarcasListController', ['$scope', '$state', '$translate', function ($scope, $state, $translate) {
-        $scope.params = {
-            selectedItems: []
-        };
-        $scope.new = function () {
-            $state.go('app.keta.marcanew');
-        };
-    }])
-    .controller('KetaMarcaEditController', ['$scope', '$translate', '$state', '$stateParams', 'Restangular', function ($scope, $translate, $state, $stateParams, Restangular) {
-        var id = $stateParams.marcaId;
-        function load() {
-            if (id) {
-                Restangular.one('servicios').one('marcas', id).get().then(function (result) {
-                    $scope.marca = result;
-                });
-            }
-        }
-        $scope.save = function () {
-            if (id) {
-                $scope.marca.put().then(function () { $state.go('app.keta.marcas'); });
-            }
-            else {
-                var datos = $scope.marca;
-                Restangular.service('servicios/marcas').post(datos).then(function () { $state.go('app.keta.marcas'); });
-            }
-        };
-        load();
-    }
-])
-    .controller('KetaClientesListController', ['$scope', '$state', '$translate', function ($scope, $state, $translate) {
-        $scope.params = {
-            selectedItems: []
-        };
-        $scope.new = function () {
-            $state.go('app.keta.clientenew');
-        };
-    }])
-    .controller('KetaClienteEditController', ['$scope', '$translate', '$state', '$stateParams', 'Restangular', function ($scope, $translate, $state, $stateParams, Restangular) {
-        var id = $stateParams.clienteId;
-        function load() {
-            if (id) {
-                Restangular.one('servicios').one('clientes', id).get().then(function (result) {
-                    $scope.cliente = result;
-                });
-            }
-        }
-        $scope.save = function () {
-            if (id) {
-                $scope.cliente.put().then(function () { $state.go('app.keta.clientes'); });
-            }
-            else {
-                var datos = $scope.cliente;
-                Restangular.service('servicios/clientes').post(datos).then(function () { $state.go('app.keta.clientes'); });
-            }
-        };
-        load();
-    }
-])
-    .controller('KetaMovilAtencionesListController', ['$scope', '$state', '$translate', function ($scope, $state, $translate) {
-        $scope.params = {
-            selectedItems: []
-        };
-        $scope.new = function () {
-            $state.go('app.keta.movilatencionnew');
-        };
-    }])
-    .controller('KetaMovilAtencionEditController', ['$scope', '$translate', '$state', '$stateParams', 'Restangular', function ($scope, $translate, $state, $stateParams, Restangular) {
-        var id = $stateParams.movilatencionId;
-        function load() {
-            if (id) {
-                Restangular.one('servicios').one('movilatenciones', id).get().then(function (result) {
-                    result.fecha = new Date(result.fecha);
-                    $scope.movilatencion = result;
-                });
-            }
-        }
-        $scope.save = function () {
-            var fecha = new Date($scope.movilatencion.fecha);
-            $scope.movilatencion.fecha = fecha;
-            if (id) {
-                $scope.movilatencion.put().then(function () { $state.go('app.keta.movilatenciones'); });
-            }
-            else {
-                var datos = $scope.movilatencion;
-                Restangular.service('servicios/movilatenciones').post(datos).then(function () { $state.go('app.keta.movilatenciones'); });
-            }
-        };
-        load();
-    }
-])
-    .directive('ketaMarcasGrid', function ($state, Restangular) {
-    return {
-        restrict: 'A',
-        scope: { height: '@', selectedItems: '=' },
-        link: function (scope, element, attrs, ctrl) {
-            var gridElementName = 'ketaMarcasGrid';
-            var pagerElementName = gridElementName + 'Pager';
-            var gridElement = angular.element('<table></table>');
-            gridElement.attr('id', gridElementName);
-            var pagerElement = angular.element('<div></div>');
-            pagerElement.attr('id', pagerElementName);
-            element.append(gridElement);
-            element.append(pagerElement);
-            scope.height = scope.height || 450;
-            var colNames = ['', 'Codigo', 'Descripcion'];
-            var colModel = [
-                {
-                    name: 'editCommand',
-                    index: 'editCommand',
-                    width: 25,
-                    align: 'center',
-                    fixed: true,
-                    sortable: false,
-                    search: false,
-                    formatter: function () { return '<i class="fa fa-caret-right hand"></i>'; }
-                },
-                { name: 'codigo', index: 'codigo', search: true, width: 150, fixed: true },
-                { name: 'descripcion', index: 'descripcion', search: true, width: 400, fixed: true }
-            ];
-            gridElement.jqGrid({
-                regional: 'es-ar',
-                url: '/api/servicios/marcas.json',
-                datatype: 'json',
-                height: scope.height,
-                autowidth: true,
-                colNames: colNames,
-                colModel: colModel,
-                rowNum: 100,
-                scroll: false,
-                loadonce: 'false',
-                mtype: 'GET',
-                gridview: true,
-                pager: pagerElementName,
-                viewrecords: true,
-                jsonReader: {
-                    page: function (obj) { return ((obj.offset / 100) + 1); },
-                    total: function (obj) { return ((obj.total / 100) + (obj.total % 100 > 0 ? 1 : 0)); },
-                    records: 'total',
-                    repeatitems: false,
-                    root: 'results'
-                },
-                onCellSelect: function (rowId, iCol, cellcontent, e) {
-                    if (iCol === 0) {
-                        var stateName = 'app.keta.marcaedit';
-                        $state.go(stateName, { marcaId: rowId });
-                        return false;
-                    }
-                },
-                beforeSelectRow: function (rowid, e) {
-                    return false;
-                }
-            });
-            gridElement.jqGrid('navGrid', '#' + pagerElementName, {
-                del: false,
-                add: false,
-                edit: false
-            }, {}, {}, {}, { multipleSearch: false });
-            gridElement.jqGrid('filterToolbar', { autosearch: true, searchOperators: false });
-            gridElement.jqGrid('bindKeys');
-        }
-    };
-})
-    .directive('ketaMarcaLookup', ['$location', function ($location) {
-        return {
-            restrict: 'A',
-            require: 'ngModel',
-            link: function (scope, element, attr, ctrl) {
-                if (!ctrl)
-                    return;
-                var required = attr.required ? attr.required : false;
-                ctrl.$render = function () {
-                    element.val(scope.$eval(attr.ngModel));
-                    element.select2({
-                        placeholder: 'Seleccione una Marca',
-                        allowClear: !required,
-                        initSelection: function (element1, callback) {
-                            if (ctrl.$modelValue) {
-                                var url = '/api/servicios/marcas/' + ctrl.$modelValue;
-                                $.getJSON(url, { format: 'json' }, function (data) {
-                                    callback({ id: data.id, text: data.codigo });
-                                });
-                            }
-                        },
-                        ajax: {
-                            url: '/api/servicios/marcas/lookup?format=json',
-                            dataType: 'json',
-                            quietMillis: 100,
-                            data: function (term, page) {
-                                return {
-                                    q: term,
-                                    pageSize: 15,
-                                    page: page
-                                };
-                            },
-                            results: function (data, page) {
-                                var more = (page * 10) < data.total;
-                                return { results: data.data, more: more };
-                            }
-                        }
-                    });
-                };
-                element.bind('change', function () {
-                    scope.$apply(function () {
-                        var data = element.select2('data');
-                        ctrl.$setViewValue(data ? data.id : null);
-                    });
-                });
-                attr.$observe('disabled', function (value) {
-                    element.select2(value && 'disable' || 'enable');
-                });
-            }
-        };
-    }])
-    .directive('ketaClientesGrid', function ($state, Restangular) {
-    return {
-        restrict: 'A',
-        scope: { height: '@', selectedItems: '=' },
-        link: function (scope, element, attrs, ctrl) {
-            var gridElementName = 'ketaClientesGrid';
-            var pagerElementName = gridElementName + 'Pager';
-            var gridElement = angular.element('<table></table>');
-            gridElement.attr('id', gridElementName);
-            var pagerElement = angular.element('<div></div>');
-            pagerElement.attr('id', pagerElementName);
-            element.append(gridElement);
-            element.append(pagerElement);
-            scope.height = scope.height || 450;
-            var colNames = ['', 'Apellido', 'Nombre', 'Telefono', 'Direccion'];
-            var colModel = [
-                {
-                    name: 'editCommand',
-                    index: 'editCommand',
-                    width: 25,
-                    align: 'center',
-                    fixed: true,
-                    sortable: false,
-                    search: false,
-                    formatter: function () { return '<i class="fa fa-caret-right hand"></i>'; }
-                },
-                { name: 'apellido', index: 'apellido', search: true, width: 150, fixed: true },
-                { name: 'nombre', index: 'nombre', search: true, width: 150, fixed: true },
-                { name: 'telefono', index: 'telefono', search: true, width: 150, fixed: true },
-                { name: 'direccion', index: 'direccion', search: true, width: 150, fixed: true }
-            ];
-            gridElement.jqGrid({
-                regional: 'es-ar',
-                url: '/api/servicios/clientes.json',
-                datatype: 'json',
-                height: scope.height,
-                autowidth: true,
-                colNames: colNames,
-                colModel: colModel,
-                rowNum: 100,
-                scroll: false,
-                loadonce: 'false',
-                mtype: 'GET',
-                gridview: true,
-                pager: pagerElementName,
-                viewrecords: true,
-                jsonReader: {
-                    page: function (obj) { return ((obj.offset / 100) + 1); },
-                    total: function (obj) { return ((obj.total / 100) + (obj.total % 100 > 0 ? 1 : 0)); },
-                    records: 'total',
-                    repeatitems: false,
-                    root: 'results'
-                },
-                onCellSelect: function (rowId, iCol, cellcontent, e) {
-                    if (iCol === 0) {
-                        var stateName = 'app.keta.clienteedit';
-                        $state.go(stateName, { clienteId: rowId });
-                        return false;
-                    }
-                },
-                beforeSelectRow: function (rowid, e) {
-                    return false;
-                }
-            });
-            gridElement.jqGrid('navGrid', '#' + pagerElementName, {
-                del: false,
-                add: false,
-                edit: false
-            }, {}, {}, {}, { multipleSearch: false });
-            gridElement.jqGrid('filterToolbar', { autosearch: true, searchOperators: false });
-            gridElement.jqGrid('bindKeys');
-        }
-    };
-})
-    .directive('ketaClienteLookup', ['$location', function ($location) {
-        return {
-            restrict: 'A',
-            require: 'ngModel',
-            link: function (scope, element, attr, ctrl) {
-                if (!ctrl)
-                    return;
-                var required = attr.required ? attr.required : false;
-                ctrl.$render = function () {
-                    element.val(scope.$eval(attr.ngModel));
-                    element.select2({
-                        placeholder: 'Seleccione una Cliente',
-                        allowClear: !required,
-                        initSelection: function (element1, callback) {
-                            if (ctrl.$modelValue) {
-                                var url = '/api/servicios/clientes/' + ctrl.$modelValue;
-                                $.getJSON(url, { format: 'json' }, function (data) {
-                                    callback({ id: data.id, text: data.nombreCompleto });
-                                });
-                            }
-                        },
-                        ajax: {
-                            url: '/api/servicios/clientes/lookup?format=json',
-                            dataType: 'json',
-                            quietMillis: 100,
-                            data: function (term, page) {
-                                return {
-                                    q: term,
-                                    pageSize: 15,
-                                    page: page
-                                };
-                            },
-                            results: function (data, page) {
-                                var more = (page * 10) < data.total;
-                                return { results: data.data, more: more };
-                            }
-                        }
-                    });
-                };
-                element.bind('change', function () {
-                    scope.$apply(function () {
-                        var data = element.select2('data');
-                        ctrl.$setViewValue(data ? data.id : null);
-                    });
-                });
-                attr.$observe('disabled', function (value) {
-                    element.select2(value && 'disable' || 'enable');
-                });
-            }
-        };
-    }])
-    .directive('ketaMovilAtencionesGrid', function ($state, Restangular) {
-    return {
-        restrict: 'A',
-        scope: { height: '@', selectedItems: '=' },
-        link: function (scope, element, attrs, ctrl) {
-            var gridElementName = 'ketaMovilAtencionesGrid';
-            var pagerElementName = gridElementName + 'Pager';
-            var gridElement = angular.element('<table></table>');
-            gridElement.attr('id', gridElementName);
-            var pagerElement = angular.element('<div></div>');
-            pagerElement.attr('id', pagerElementName);
-            element.append(gridElement);
-            element.append(pagerElement);
-            scope.height = scope.height || 450;
-            var colNames = ['', 'Patente', 'Marca', 'Modelo', 'Nombre', 'Apellido', 'Telefono', 'Fecha'];
-            var colModel = [
-                {
-                    name: 'editCommand',
-                    index: 'editCommand',
-                    width: 25,
-                    align: 'center',
-                    fixed: true,
-                    sortable: false,
-                    search: false,
-                    formatter: function () { return '<i class="fa fa-caret-right hand"></i>'; }
-                },
-                { name: 'patente', index: 'patente', search: true, width: 150, fixed: true },
-                { name: 'marcaCodigo', index: 'marcaCodigo', search: true, width: 150, fixed: true },
-                { name: 'modelo', index: 'modelo', search: true, width: 150, fixed: true },
-                { name: 'clienteNombre', index: 'clienteNombre', search: true, width: 150, fixed: true },
-                { name: 'clienteApellido', index: 'clienteApellido', search: true, width: 150, fixed: true },
-                { name: 'clienteTelefono', index: 'clienteTelefono', search: true, width: 150, fixed: true },
-                { name: 'fecha', index: 'fecha', search: true, width: 150, fixed: true },
-            ];
-            gridElement.jqGrid({
-                regional: 'es-ar',
-                url: '/api/servicios/movilatenciones.json',
-                datatype: 'json',
-                height: scope.height,
-                autowidth: true,
-                colNames: colNames,
-                colModel: colModel,
-                rowNum: 100,
-                scroll: false,
-                loadonce: 'false',
-                mtype: 'GET',
-                gridview: true,
-                pager: pagerElementName,
-                viewrecords: true,
-                jsonReader: {
-                    page: function (obj) { return ((obj.offset / 100) + 1); },
-                    total: function (obj) { return ((obj.total / 100) + (obj.total % 100 > 0 ? 1 : 0)); },
-                    records: 'total',
-                    repeatitems: false,
-                    root: 'results'
-                },
-                onCellSelect: function (rowId, iCol, cellcontent, e) {
-                    if (iCol === 0) {
-                        var stateName = 'app.keta.movilatencionedit';
-                        $state.go(stateName, { movilatencionId: rowId });
-                        return false;
-                    }
-                },
-                beforeSelectRow: function (rowid, e) {
-                    return false;
-                }
-            });
-            gridElement.jqGrid('navGrid', '#' + pagerElementName, {
-                del: false,
-                add: false,
-                edit: false
-            }, {}, {}, {}, { multipleSearch: false });
-            gridElement.jqGrid('filterToolbar', { autosearch: true, searchOperators: false });
-            gridElement.jqGrid('bindKeys');
-        }
-    };
-})
-    .directive('ketaMovilAtencionLookup', ['$location', function ($location) {
-        return {
-            restrict: 'A',
-            require: 'ngModel',
-            link: function (scope, element, attr, ctrl) {
-                if (!ctrl)
-                    return;
-                var required = attr.required ? attr.required : false;
-                ctrl.$render = function () {
-                    element.val(scope.$eval(attr.ngModel));
-                    element.select2({
-                        placeholder: 'Seleccione una Movil',
-                        allowClear: !required,
-                        initSelection: function (element1, callback) {
-                            if (ctrl.$modelValue) {
-                                var url = '/api/servicios/movilatenciones/' + ctrl.$modelValue;
-                                $.getJSON(url, { format: 'json' }, function (data) {
-                                    callback({ id: data.id, text: data.codigo });
-                                });
-                            }
-                        },
-                        ajax: {
-                            url: '/api/servicios/movilatenciones/lookup?format=json',
-                            dataType: 'json',
-                            quietMillis: 100,
-                            data: function (term, page) {
-                                return {
-                                    q: term,
-                                    pageSize: 15,
-                                    page: page
-                                };
-                            },
-                            results: function (data, page) {
-                                var more = (page * 10) < data.total;
-                                return { results: data.data, more: more };
-                            }
-                        }
-                    });
-                };
-                element.bind('change', function () {
-                    scope.$apply(function () {
-                        var data = element.select2('data');
-                        ctrl.$setViewValue(data ? data.id : null);
-                    });
-                });
-                attr.$observe('disabled', function (value) {
-                    element.select2(value && 'disable' || 'enable');
-                });
-            }
-        };
-    }]);
 angular.module('app.system', [])
     .config(['$stateProvider', function ($stateProvider) {
         $stateProvider
@@ -2304,6 +2211,165 @@ angular.module('app.system', [])
             }
         };
     }]);
+angular.module('app.core', [])
+    .constant('APP_MEDIAQUERY', {
+    'desktopXL': 1200,
+    'desktop': 992,
+    'tablet': 768,
+    'mobile': 480
+});
+var jsRequires = {
+    scripts: {
+        'login-soft': 'content/css/login-soft.css',
+        'modernizr': ['vendor/modernizr/modernizr.js'],
+        'spin': 'vendor/ladda/spin.min.js',
+        'perfect-scrollbar-plugin': ['vendor/perfect-scrollbar/perfect-scrollbar.min.js', 'vendor/perfect-scrollbar/perfect-scrollbar.min.css'],
+        'ladda': ['vendor/ladda/spin.min.js', 'vendor/ladda/ladda.min.js', 'vendor/ladda/ladda-themeless.min.css'],
+        'sweet-alert': ['vendor/sweet-alert/sweet-alert.min.js', 'vendor/sweet-alert/sweet-alert.css'],
+        'chartjs': 'vendor/chartjs/Chart.min.js',
+        'jquery-sparkline': 'vendor/sparkline/jquery.sparkline.min.js',
+        'ckeditor-plugin': 'vendor/ckeditor/ckeditor.js',
+        'jquery-nestable-plugin': ['vendor/ng-nestable/jquery.nestable.js', 'vendor/ng-nestable/jquery.nestable.css'],
+        'touchspin-plugin': 'vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.js',
+        'bootstrapjs': 'bower_components/bootstrap/dist/js/bootstrap.min.js',
+        'jqueryui': ['bower_components/jquery-ui/jquery-ui.min.js', 'bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css'],
+        'jqGrid': ['scripts/grid.locale-es-ar.js', 'bower_components/jqgrid/js/jquery.jqGrid.min.js', 'bower_components/jqgrid/css/ui.jqgrid.css', 'Content/css/jqGrid.css'],
+        'select2': { files: ['bower_components/select2/select2.min.js', 'bower_components/select2/select2_locale_es.js', 'bower_components/select2/select2.css', 'Content/css/select2.css'], serie: true },
+        'kendoweb': { files: ['Content/lib/kendoui/kendo.web.min.js'] },
+        'htmlToPlaintext': 'assets/js/filters/htmlToPlaintext.js'
+    },
+    modules: [
+        {
+            name: 'dialogs.main',
+            insertBefore: '#ng_load_plugins_before',
+            files: ['bower_components/angular-dialog-service/dist/dialogs.min.css', 'bower_components/angular-dialog-service/dist/dialogs.min.js']
+        },
+        {
+            name: 'ng-backstretch',
+            files: ['bower_components/ng-backstretch/dist/ng-backstretch.min.js']
+        },
+        {
+            name: 'perfect_scrollbar',
+            files: ['vendor/perfect-scrollbar/angular-perfect-scrollbar.js']
+        },
+        {
+            name: 'alertify',
+            files: ['bower_components/ngAlertify/ngAlertify.js', 'bower_components/ngAlertify/alertify.min.css', 'bower_components/ngAlertify/alertify.default.css']
+        },
+        {
+            name: 'toaster',
+            files: ['bower_components/AngularJS-Toaster/toaster.js', 'bower_components/AngularJS-Toaster/toaster.css']
+        }, {
+            name: 'angularBootstrapNavTree',
+            files: ['vendor/angular-bootstrap-nav-tree/abn_tree_directive.js', 'vendor/angular-bootstrap-nav-tree/abn_tree.css']
+        }, {
+            name: 'angular-ladda',
+            files: ['vendor/ladda/angular-ladda.min.js']
+        }, {
+            name: 'ngTable',
+            files: ['vendor/ng-table/ng-table.min.js', 'vendor/ng-table/ng-table.min.css']
+        }, {
+            name: 'ui.select',
+            files: ['vendor/ui-select/select.min.js', 'vendor/ui-select/select.min.css', 'vendor/ui-select/select2.css', 'vendor/ui-select/select2-bootstrap.css', 'vendor/ui-select/selectize.bootstrap3.css']
+        }, {
+            name: 'ui.mask',
+            files: ['vendor/ui-utils/mask/mask.js']
+        }, {
+            name: 'angular-bootstrap-touchspin',
+            files: ['vendor/bootstrap-touchspin/angular.bootstrap-touchspin.js', 'vendor/bootstrap-touchspin/jquery.bootstrap-touchspin.min.css']
+        }, {
+            name: 'ngImgCrop',
+            files: ['vendor/ngImgCrop/ng-img-crop.js', 'vendor/ngImgCrop/ng-img-crop.css']
+        }, {
+            name: 'angularFileUpload',
+            files: ['vendor/angular-file-upload/angular-file-upload.min.js', 'vendor/angular-file-upload/directives.js']
+        }, {
+            name: 'ngAside',
+            files: ['vendor/angular-aside/angular-aside.min.js', 'vendor/angular-aside/angular-aside.min.css']
+        }, {
+            name: 'truncate',
+            files: ['vendor/angular-truncate/truncate.js']
+        }, {
+            name: 'oitozero.ngSweetAlert',
+            files: ['vendor/sweet-alert/ngSweetAlert.min.js']
+        }, {
+            name: 'monospaced.elastic',
+            files: ['vendor/angular-elastic/elastic.js']
+        }, {
+            name: 'ngMap',
+            files: ['vendor/angular-google-maps/ng-map.min.js']
+        }, {
+            name: 'tc.chartjs',
+            files: ['vendor/chartjs/tc-angular-chartjs.min.js']
+        }, {
+            name: 'sparkline',
+            files: ['vendor/sparkline/angular-sparkline.js']
+        }, {
+            name: 'flow',
+            files: ['vendor/ng-flow/ng-flow-standalone.min.js']
+        }, {
+            name: 'uiSwitch',
+            files: ['vendor/angular-ui-switch/angular-ui-switch.min.js', 'vendor/angular-ui-switch/angular-ui-switch.min.css']
+        }, {
+            name: 'ckeditor',
+            files: ['vendor/ckeditor/angular-ckeditor.min.js']
+        }, {
+            name: 'mwl.calendar',
+            files: ['vendor/angular-bootstrap-calendar/angular-bootstrap-calendar.js', 'vendor/angular-bootstrap-calendar/angular-bootstrap-calendar-tpls.js', 'vendor/angular-bootstrap-calendar/angular-bootstrap-calendar.min.css']
+        }, {
+            name: 'ng-nestable',
+            files: ['vendor/ng-nestable/angular-nestable.js']
+        }, {
+            name: 'vAccordion',
+            files: ['vendor/v-accordion/v-accordion.min.js', 'vendor/v-accordion/v-accordion.min.css']
+        }, {
+            name: 'xeditable',
+            files: ['vendor/angular-xeditable/xeditable.min.js', 'vendor/angular-xeditable/xeditable.css']
+        }, {
+            name: 'config-xeditable',
+            files: ['vendor/angular-xeditable/config-xeditable.js']
+        }, {
+            name: 'checklist-model',
+            files: ['vendor/checklist-model/checklist-model.js']
+        }, {
+            name: 'telerikreport',
+            files: ['ReportViewr/js/telerikReportViewer-9.1.15.731.min.js', 'ReportViewr/js/telerikReportViewer-9.1.15.731.min.css']
+        }]
+};
+function loadSequence() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+        args[_i - 0] = arguments[_i];
+    }
+    return {
+        deps: ['$ocLazyLoad', '$q',
+            function ($ocLL, $q) {
+                var promise = $q.when(1);
+                for (var i = 0, len = args.length; i < len; i++) {
+                    promise = promiseThen(args[i]);
+                }
+                return promise;
+                function promiseThen(arg) {
+                    if (typeof arg == 'function')
+                        return promise.then(arg);
+                    else
+                        return promise.then(function () {
+                            var nowLoad = requiredData(arg);
+                            if (!nowLoad)
+                                return $.error('Route resolve: Bad resource name [' + arg + ']');
+                            return $ocLL.load(nowLoad);
+                        });
+                }
+                function requiredData(name) {
+                    if (jsRequires.modules)
+                        for (var m in jsRequires.modules)
+                            if (jsRequires.modules[m].name && jsRequires.modules[m].name === name)
+                                return jsRequires.modules[m];
+                    return jsRequires.scripts && jsRequires.scripts[name];
+                }
+            }]
+    };
+}
 'use strict';
 angular.element(document).ready(function ($http) {
     $http.get('/api/sessions/mysession.json').then(function (data) {

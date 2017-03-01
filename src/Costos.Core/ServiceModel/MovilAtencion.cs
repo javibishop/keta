@@ -32,6 +32,11 @@ namespace Keta.ServiceModel
         {
         }
 
+          [Route("/servicios/movilatenciones/delete/{Id}", "POST")]
+        public class DeleteMovilAtencion
+        {
+            public int Id { get; set; }
+        }
         public class QueryResultMA
         {
             public int Id { get; set; }

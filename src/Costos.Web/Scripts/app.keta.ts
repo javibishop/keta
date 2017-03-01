@@ -28,7 +28,7 @@ angular.module('app.keta', [
             url: '/marcas',
             controller: 'KetaMarcasListController',
             templateUrl: 'tpl/marcas/list.html',
-            resolve: loadSequence('jqueryui', 'jqGrid'),
+            resolve: loadSequence('jqueryui', 'jqGrid', 'alertify'),
             ncyBreadcrumb: {
                 parent: 'app.keta',
                 label: 'keta.marcas'
@@ -59,7 +59,7 @@ angular.module('app.keta', [
             url: '/clientes',
             controller: 'KetaClientesListController',
             templateUrl: 'tpl/clientes/list.html',
-            resolve: loadSequence('jqueryui', 'jqGrid'),
+            resolve: loadSequence('jqueryui', 'jqGrid', 'alertify'),
             ncyBreadcrumb: {
                 parent: 'app.keta',
                 label: 'keta.clientes'
@@ -90,7 +90,7 @@ angular.module('app.keta', [
             url: '/movilatenciones',
             controller: 'KetaMovilAtencionesListController',
             templateUrl: 'tpl/movilatenciones/list.html',
-            resolve: loadSequence('jqueryui', 'jqGrid'),
+            resolve: loadSequence('jqueryui', 'jqGrid', 'alertify'),
             ncyBreadcrumb: {
                 parent: 'app.keta',
                 label: 'keta.movilatenciones'
@@ -229,7 +229,7 @@ angular.module('app.keta', [
     ])
 
 
-    .directive('ketaMarcasGrid', ($state, Restangular) => {
+    .directive('ketaMarcasGrid', ($state, Restangular, alertify) => {
         return {
             restrict: 'A',
             scope: { height: '@', selectedItems: '=' },
@@ -244,7 +244,7 @@ angular.module('app.keta', [
                 element.append(pagerElement);
 
                 scope.height = scope.height || 450;
-                var colNames = ['', 'Codigo', 'Descripcion'];
+                var colNames = ['', '', 'Codigo', 'Descripcion'];
                 var colModel: Array<any> = [
                     {
                         name: 'editCommand',
@@ -255,6 +255,16 @@ angular.module('app.keta', [
                         sortable: false,
                         search: false,
                         formatter: () => { return '<i class="fa fa-caret-right hand"></i>'; }
+                    },
+                    {
+                        name: 'deleteCommand',
+                        index: 'deleteCommand',
+                        width: 25,
+                        align: 'center',
+                        fixed: true,
+                        sortable: false,
+                        search: false,
+                        formatter: () => { return '<i class="fa fa-times hand"></i>'; }
                     },
                     { name: 'codigo', index: 'codigo', search: true, width: 150, fixed: true },
                     { name: 'descripcion', index: 'descripcion', search: true, width: 400, fixed: true }
@@ -286,6 +296,19 @@ angular.module('app.keta', [
                             var stateName = 'app.keta.marcaedit';
                             $state.go(stateName, { marcaId: rowId });
                             return false;
+                        }
+                        if (iCol === 1) {
+                            alertify.confirm("Desea eliminar el registro?.", function (e) {
+                                if (e) {
+
+                                    Restangular.one('servicios').one('marcas').one('delete').post(rowId).then(result => {
+                                        if (result.result == true)
+                                            $state.reload();
+                                        else
+                                            alert("No se pudo borrar la marca.");
+                                    });
+                                }
+                            });
                         }
                     },
                     beforeSelectRow(rowid, e) {
@@ -359,7 +382,7 @@ angular.module('app.keta', [
         };
     }])
 
-    .directive('ketaClientesGrid', ($state, Restangular) => {
+    .directive('ketaClientesGrid', ($state, Restangular, alertify) => {
         return {
             restrict: 'A',
             scope: { height: '@', selectedItems: '=' },
@@ -374,7 +397,7 @@ angular.module('app.keta', [
                 element.append(pagerElement);
 
                 scope.height = scope.height || 450;
-                var colNames = ['', 'Apellido', 'Nombre', 'Telefono', 'Direccion'];
+                var colNames = ['','', 'Apellido', 'Nombre', 'Telefono', 'Direccion'];
                 var colModel: Array<any> = [
                     {
                         name: 'editCommand',
@@ -385,6 +408,16 @@ angular.module('app.keta', [
                         sortable: false,
                         search: false,
                         formatter: () => { return '<i class="fa fa-caret-right hand"></i>'; }
+                    },
+                    {
+                        name: 'deleteCommand',
+                        index: 'deleteCommand',
+                        width: 25,
+                        align: 'center',
+                        fixed: true,
+                        sortable: false,
+                        search: false,
+                        formatter: () => { return '<i class="fa fa-times hand"></i>'; }
                     },
                     { name: 'apellido', index: 'apellido', search: true, width: 150, fixed: true },
                     { name: 'nombre', index: 'nombre', search: true, width: 150, fixed: true },
@@ -418,6 +451,19 @@ angular.module('app.keta', [
                             var stateName = 'app.keta.clienteedit';
                             $state.go(stateName, { clienteId: rowId });
                             return false;
+                        }
+                        if (iCol === 1) {
+                            alertify.confirm("Desea eliminar el registro?.", function (e) {
+                                if (e) {
+
+                                    Restangular.one('servicios').one('clientes').one('delete').post(rowId).then(result => {
+                                        if (result.result == true)
+                                            $state.reload();
+                                        else
+                                            alert("No se pudo borrar el cliente.");
+                                    });
+                                }
+                            });
                         }
                     },
                     beforeSelectRow(rowid, e) {
@@ -492,7 +538,7 @@ angular.module('app.keta', [
     }])
 
 
-    .directive('ketaMovilAtencionesGrid', ($state, Restangular) => {
+    .directive('ketaMovilAtencionesGrid', ($state, Restangular, alertify) => {
         return {
             restrict: 'A',
             scope: { height: '@', selectedItems: '=' },
@@ -507,7 +553,7 @@ angular.module('app.keta', [
                 element.append(pagerElement);
 
                 scope.height = scope.height || 450;
-                var colNames = ['', 'Patente', 'Marca', 'Modelo', 'Nombre', 'Apellido', 'Telefono', 'Fecha'];
+                var colNames = ['','', 'Patente', 'Marca', 'Modelo', 'Nombre', 'Apellido', 'Telefono', 'Fecha'];
                 var colModel: Array<any> = [
                     {
                         name: 'editCommand',
@@ -518,6 +564,16 @@ angular.module('app.keta', [
                         sortable: false,
                         search: false,
                         formatter: () => { return '<i class="fa fa-caret-right hand"></i>'; }
+                    },
+                    {
+                        name: 'deleteCommand',
+                        index: 'deleteCommand',
+                        width: 25,
+                        align: 'center',
+                        fixed: true,
+                        sortable: false,
+                        search: false,
+                        formatter: () => { return '<i class="fa fa-times hand"></i>'; }
                     },
                     { name: 'patente', index: 'patente', search: true, width: 150, fixed: true },
                     { name: 'marcaCodigo', index: 'marcaCodigo', search: true, width: 150, fixed: true },
@@ -554,6 +610,19 @@ angular.module('app.keta', [
                             var stateName = 'app.keta.movilatencionedit';
                             $state.go(stateName, { movilatencionId: rowId });
                             return false;
+                        }
+                        if (iCol === 1) {
+                            alertify.confirm("Desea eliminar el registro?.", function (e) {
+                                if (e) {
+
+                                    Restangular.one('servicios').one('movilatenciones').one('delete').post(rowId).then(result => {
+                                        if (result.result == true)
+                                            $state.reload();
+                                        else
+                                            alert("No se pudo borrar el cliente.");
+                                    });
+                                }
+                            });
                         }
                     },
                     beforeSelectRow(rowid, e) {
